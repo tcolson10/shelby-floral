@@ -493,23 +493,79 @@ nav li a:focus {
 	color: rgba(255, 255, 255, 0.85);
 }
 
+/* Two equal columns: both buttons take the width of the wider one. */
+.hero-actions {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 16px;
+	margin-top: 44px;
+}
+
+/* Hydrangea-blue buttons in the same spaced capitals as the tagline; they
+   deepen on hover (or tap, on phones). */
+.hero-btn {
+	padding: 13px 30px;
+	background: var(--blue);
+	color: var(--ivory);
+	border: 1px solid var(--blue);
+	font-family: var(--font-body);
+	font-size: 0.68rem;
+	font-weight: 400;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
+	transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+.hero-btn:hover,
+.hero-btn:active {
+	background: var(--blue-dark);
+	border-color: var(--blue-dark);
+}
+
+.hero-btn:active {
+	transition-duration: 0.1s;
+}
+
+.hero-btn:focus {
+	outline: none;
+}
+
+.hero-btn:focus-visible {
+	outline: 1px solid var(--blue-light);
+	outline-offset: 4px;
+}
+
 @media (max-width: 768px) {
 	.hero {
 		min-height: 100svh;
 	}
 
-	/* Trim the top of the photo on phones: make it 12% taller than the
+	/* Trim the top of the photo on phones: make it 18% taller than the
 	   screen and shift it up so the extra is cut off above. */
 	.hero-bg {
-		top: -12vh;
-		top: -12lvh;
-		height: 112vh;
-		height: 112lvh;
+		top: -18vh;
+		top: -18lvh;
+		height: 118vh;
+		height: 118lvh;
 	}
 }
 
 /* On phones the name stays on one line, sized to the screen width. */
 @media (max-width: 640px) {
+	.hero-actions {
+		gap: 8px;
+		margin-top: 32px;
+	}
+
+	.hero-btn {
+		padding: 9px 13px;
+		font-size: 0.54rem;
+		letter-spacing: 0.2em;
+	}
+
 	.hero-headline {
 		font-size: 8.3vw;
 		letter-spacing: 0.24em;

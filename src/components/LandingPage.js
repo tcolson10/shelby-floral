@@ -39,6 +39,14 @@ const LandingPage = () => {
 					<p className="hero-tagline hero-fade-in" style={{ animationDelay: "650ms" }}>
 						Wedding &amp; Event Design
 					</p>
+					<div className="hero-actions hero-fade-in" style={{ animationDelay: "950ms" }}>
+						<button type="button" className="hero-btn" onClick={() => scrollTo("portfolio")}>
+							View Our Work
+						</button>
+						<button type="button" className="hero-btn" onClick={toContact}>
+							Get In Touch
+						</button>
+					</div>
 				</div>
 			</div>
 
