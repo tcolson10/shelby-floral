@@ -91,11 +91,27 @@ a:focus {
 	color: var(--blue-dark);
 }
 
-a:focus,
-button:focus,
 input:focus,
 textarea:focus,
 select:focus {
+	outline: 2px solid var(--blue);
+	outline-offset: 2px;
+}
+
+/* Links and buttons: no box when clicked or tapped, only when reached with
+   the keyboard (Tab), so keyboard users can still see where they are. */
+a,
+button {
+	-webkit-tap-highlight-color: transparent;
+}
+
+a:focus,
+button:focus {
+	outline: none;
+}
+
+a:focus-visible,
+button:focus-visible {
 	outline: 2px solid var(--blue);
 	outline-offset: 2px;
 }
@@ -766,7 +782,7 @@ nav li a:focus {
 	color: var(--ivory);
 }
 
-.about-cta:focus {
+.about-cta:focus-visible {
 	outline: 2px solid var(--blue);
 	outline-offset: 3px;
 }
@@ -973,8 +989,8 @@ nav li a:focus {
 	color: var(--white);
 }
 
-.lightbox-close:focus,
-.lightbox-nav:focus {
+.lightbox-close:focus-visible,
+.lightbox-nav:focus-visible {
 	outline: 2px solid var(--white);
 	outline-offset: 2px;
 }
@@ -1160,7 +1176,7 @@ nav li a:focus {
 	color: var(--white);
 }
 
-.carousel-btn:focus {
+.carousel-btn:focus-visible {
 	outline: 2px solid rgba(255, 255, 255, 0.5);
 	outline-offset: 2px;
 }
@@ -1598,7 +1614,7 @@ nav li a:focus {
 	padding: 40px 0;
 }
 
-.submit-button:focus {
+.submit-button:focus-visible {
 	outline: 2px solid var(--blue);
 	outline-offset: 3px;
 }
@@ -1784,7 +1800,7 @@ nav li a:focus {
 	color: var(--ivory);
 }
 
-.partnerships-btn:focus {
+.partnerships-btn:focus-visible {
 	outline: 2px solid var(--blue);
 	outline-offset: 3px;
 }
