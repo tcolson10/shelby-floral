@@ -619,18 +619,41 @@ nav li a:focus {
 	}
 
 	.hero-headline {
-		font-size: clamp(3.8rem, 16vw, 5.8rem);
+		font-size: clamp(3.2rem, 14vw, 5rem);
+	}
+
+	/* Phones keep the original, smaller hero text sizes. */
+	.hero-eyebrow {
+		font-size: 0.68rem;
 	}
 
 	.hero-tagline {
-		font-size: 1rem;
-		letter-spacing: 0.1em;
+		font-size: 0.9rem;
+	}
+
+	/* Trim the top of the photo on phones: make it taller than the hero and
+	   pin it to the bottom so the extra is cut off above. */
+	.hero-bg {
+		inset: auto 0 0 0;
+		height: 112%;
+	}
+
+	.hero-content {
+		padding: 0 20px;
+	}
+
+	/* Buttons always sit side by side on phones, even narrow ones. */
+	.hero-actions {
+		flex-wrap: nowrap;
+		gap: 10px;
 	}
 
 	.hero-btn-primary,
 	.hero-btn-outline {
-		padding: 15px 30px;
-		font-size: 0.78rem;
+		padding: 12px 18px;
+		font-size: 0.62rem;
+		letter-spacing: 0.14em;
+		white-space: nowrap;
 	}
 }
 
@@ -1238,6 +1261,10 @@ nav li a:focus {
 
 	.carousel-slide blockquote {
 		font-size: 1.15rem;
+	}
+
+	.carousel-dots {
+		gap: 0;
 	}
 
 	.carousel-dot {
