@@ -471,11 +471,15 @@ nav li a:focus {
 	clip-path: inset(0);
 }
 
+/* Sized to the large viewport (lvh: screen height with the phone's address
+   bar hidden) so the fixed photo doesn't re-zoom when the bar collapses. */
 .hero-bg {
 	position: fixed;
-	inset: 0;
+	top: 0;
+	left: 0;
 	width: 100%;
-	height: 100%;
+	height: 100vh;
+	height: 100lvh;
 	object-fit: cover;
 	object-position: center 44%;
 	z-index: 0;
@@ -483,7 +487,11 @@ nav li a:focus {
 
 .hero-overlay {
 	position: fixed;
-	inset: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	height: 100lvh;
 	z-index: 1;
 	background: linear-gradient(
 		to bottom,
@@ -639,11 +647,13 @@ nav li a:focus {
 		font-size: 0.9rem;
 	}
 
-	/* Trim the top of the photo on phones: make it taller than the hero and
-	   pin it to the bottom so the extra is cut off above. */
+	/* Trim the top of the photo on phones: make it 12% taller than the
+	   screen and shift it up so the extra is cut off above. */
 	.hero-bg {
-		inset: auto 0 0 0;
-		height: 112%;
+		top: -12vh;
+		top: -12lvh;
+		height: 112vh;
+		height: 112lvh;
 	}
 
 	.hero-content {
