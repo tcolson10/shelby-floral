@@ -11,7 +11,7 @@ function PortfolioFull() {
 	return (
 		<div className="portfolio-page-container full-page">
 			<div className="page-nav">
-				<Link to="/" className="back-link" style={{ color: "var(--blue)" }}>
+				<Link to="/" className="back-link" style={{ color: "var(--gold-ink)" }}>
 					← Back to Home
 				</Link>
 			</div>
