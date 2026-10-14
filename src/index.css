@@ -1,24 +1,22 @@
 /* ======== CSS VARIABLES ======== */
 :root {
-	/* Sage, gold and cream. Main words are gold; filler text is white on the
-	   dark sage and dark sage on the light backgrounds. */
+	/* Palette taken from the hydrangeas in the hero photo; whites and creams kept. */
 	--cream: #faf8f5;
 	--ivory: #f0ebe0;
+	--blue: #41658f;
+	--blue-dark: #2f4f78;
+	--blue-light: #a9c1dc;
+	--navy: #1c2b3e;
+	--slate: #56677c;
+	--muted: #8b98a8;
+	--border: #d9e2ec;
 	--white: #ffffff;
-	--sage-deep: #33423a; /* dark sections: hero, testimonials, footer */
-	--sage-text: #56635a; /* body text on light backgrounds */
-	--sage-pale: #b9c7b6;
-	--muted: #8b958a;
-	--border: #dfe3da;
-	--gold: #c9a96e; /* main words and accents on dark sage */
-	--gold-deep: #8f7034; /* main words and accents on light backgrounds */
-	--gold-ink: #7f6230; /* small gold text (links) on light backgrounds */
 
 	/* Legacy aliases so nothing breaks */
-	--primary-color: var(--gold-deep);
-	--primary-dark: var(--gold-ink);
-	--primary-color-alpha: rgba(143, 112, 52, 0.22);
-	--text-color: var(--sage-deep);
+	--primary-color: var(--blue);
+	--primary-dark: var(--blue-dark);
+	--primary-color-alpha: rgba(65, 101, 143, 0.25);
+	--text-color: var(--navy);
 	--light-gray: var(--cream);
 	--portfolio-bg: var(--ivory);
 	--border-color: var(--border);
@@ -83,14 +81,14 @@ h1, h2, h3, h4 {
 
 /* ======== LINKS & FOCUS ======== */
 a {
-	color: var(--gold-ink);
+	color: var(--blue);
 	text-decoration: none;
 	transition: color var(--transition-speed) ease;
 }
 
 a:hover,
 a:focus {
-	color: var(--sage-deep);
+	color: var(--blue-dark);
 }
 
 a:focus,
@@ -98,7 +96,7 @@ button:focus,
 input:focus,
 textarea:focus,
 select:focus {
-	outline: 2px solid var(--gold-deep);
+	outline: 2px solid var(--blue);
 	outline-offset: 2px;
 }
 
@@ -161,7 +159,7 @@ header.nav-scrolled {
 .hamburger-line {
 	width: 30px;
 	height: 2px;
-	background-color: var(--sage-deep);
+	background-color: var(--navy);
 	transition: transform var(--transition-speed) ease,
 		opacity var(--transition-speed) ease,
 		background-color var(--transition-speed) ease;
@@ -203,7 +201,7 @@ nav li {
 
 nav li a {
 	text-decoration: none;
-	color: var(--sage-deep);
+	color: var(--navy);
 	transition: color var(--transition-speed) ease;
 	display: inline-block;
 	padding: 5px 0;
@@ -227,7 +225,7 @@ nav li a::after {
 
 nav li a:hover,
 nav li a:focus {
-	color: var(--gold-deep);
+	color: var(--blue);
 	background-color: transparent;
 }
 
@@ -318,7 +316,7 @@ nav li a:focus {
 		font-family: var(--font-display);
 		font-weight: 400;
 		width: 100%;
-		color: var(--sage-deep);
+		color: var(--navy);
 		text-transform: uppercase;
 	}
 
@@ -329,7 +327,7 @@ nav li a:focus {
 	nav li a:hover,
 	nav li a:focus {
 		background-color: transparent;
-		color: var(--gold-deep);
+		color: var(--blue);
 	}
 }
 
@@ -340,7 +338,7 @@ nav li a:focus {
 	align-items: center;
 	text-align: center;
 	padding: 80px 24px 40px;
-	background: var(--sage-deep);
+	background: var(--navy);
 	color: var(--ivory);
 }
 
@@ -350,7 +348,7 @@ nav li a:focus {
 	font-size: clamp(1.4rem, 3vw, 2rem);
 	letter-spacing: 0.3em;
 	text-transform: uppercase;
-	color: var(--gold);
+	color: var(--ivory);
 }
 
 @media (max-width: 640px) {
@@ -380,13 +378,12 @@ nav li a:focus {
 	justify-content: center;
 	width: 48px;
 	height: 48px;
-	color: var(--gold);
-	opacity: 0.85;
-	transition: opacity var(--transition-speed) ease;
+	color: rgba(255, 255, 255, 0.75);
+	transition: color var(--transition-speed) ease;
 }
 
 .social-icons a:hover {
-	opacity: 1;
+	color: var(--white);
 }
 
 /* No box when clicked or tapped; keyboard users still get a subtle ring. */
@@ -399,9 +396,9 @@ nav li a:focus {
 }
 
 .social-icons a:focus-visible {
-	outline: 1px solid var(--gold);
+	outline: 1px solid rgba(255, 255, 255, 0.5);
 	outline-offset: 2px;
-	opacity: 1;
+	color: var(--white);
 }
 
 .social-icons svg {
@@ -414,7 +411,7 @@ nav li a:focus {
 	margin: 12px 0 0;
 	font-size: 0.75rem;
 	letter-spacing: 0.08em;
-	color: var(--gold);
+	color: var(--blue-light);
 	opacity: 0;
 	transition: opacity var(--transition-speed) ease;
 }
@@ -441,7 +438,7 @@ nav li a:focus {
 	justify-content: center;
 	text-align: center;
 	overflow: hidden;
-	background: var(--sage-deep);
+	background: var(--navy);
 }
 
 /* Line-drawn bouquet logo, used as a mask so its color comes from CSS. */
@@ -450,7 +447,7 @@ nav li a:focus {
 	width: 64px;
 	height: 110px;
 	margin-bottom: 36px;
-	background-color: var(--gold);
+	background-color: var(--blue-light);
 	-webkit-mask: url("./images/flower-logo.png") center / contain no-repeat;
 	mask: url("./images/flower-logo.png") center / contain no-repeat;
 }
@@ -504,7 +501,7 @@ nav li a:focus {
 	margin: 0 -0.3em 0 0;
 	text-transform: uppercase;
 	line-height: 1;
-	color: var(--gold);
+	color: var(--ivory);
 }
 
 .hero-tagline {
@@ -525,7 +522,7 @@ nav li a:focus {
 }
 
 /* Transparent outlined buttons in the tagline's spaced capitals; like every
-   button on the site, they fill with gold on hover/tap. */
+   button on the site, they fill with the deep hydrangea blue on hover/tap. */
 .hero-btn {
 	padding: 13px 30px;
 	background: transparent;
@@ -544,9 +541,8 @@ nav li a:focus {
 
 .hero-btn:hover,
 .hero-btn:active {
-	background: var(--gold);
-	border-color: var(--gold);
-	color: var(--sage-deep);
+	background: var(--blue-dark);
+	border-color: var(--blue-dark);
 }
 
 .hero-btn:active {
@@ -558,7 +554,7 @@ nav li a:focus {
 }
 
 .hero-btn:focus-visible {
-	outline: 1px solid var(--gold);
+	outline: 1px solid var(--blue-light);
 	outline-offset: 4px;
 }
 
@@ -594,7 +590,7 @@ nav li a:focus {
 .stats-bar {
 	display: flex;
 	justify-content: center;
-	background: var(--sage-deep);
+	background: var(--navy);
 	padding: 48px 5%;
 }
 
@@ -621,7 +617,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: clamp(2rem, 4vw, 3rem);
 	font-weight: 300;
-	color: var(--gold);
+	color: var(--white);
 	line-height: 1;
 	letter-spacing: 0.02em;
 }
@@ -660,7 +656,7 @@ nav li a:focus {
 	font-size: 0.72rem;
 	letter-spacing: 0.32em;
 	text-transform: uppercase;
-	color: var(--sage-text);
+	color: var(--blue);
 	margin-bottom: 18px;
 	font-weight: 400;
 }
@@ -671,7 +667,7 @@ nav li a:focus {
 	font-weight: 400;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	color: var(--gold-deep);
+	color: var(--navy);
 	margin: 0 0 22px 0;
 	line-height: 1.25;
 }
@@ -716,7 +712,7 @@ nav li a:focus {
 }
 
 .about-text p {
-	color: var(--sage-text);
+	color: var(--slate);
 	line-height: 1.85;
 	margin: 0 0 18px 0;
 	font-size: 1rem;
@@ -729,8 +725,8 @@ nav li a:focus {
 	margin-top: 12px;
 	padding: 15px 40px;
 	background: transparent;
-	color: var(--sage-deep);
-	border: 1px solid var(--sage-deep);
+	color: var(--navy);
+	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
 	letter-spacing: 0.26em;
@@ -744,13 +740,13 @@ nav li a:focus {
 
 .about-cta:hover,
 .about-cta:active {
-	background: var(--gold);
-	border-color: var(--gold);
-	color: var(--sage-deep);
+	background: var(--blue-dark);
+	border-color: var(--blue-dark);
+	color: var(--ivory);
 }
 
 .about-cta:focus {
-	outline: 2px solid var(--gold-deep);
+	outline: 2px solid var(--blue);
 	outline-offset: 3px;
 }
 
@@ -809,7 +805,7 @@ nav li a:focus {
 }
 
 .portfolio-header p {
-	color: var(--sage-text);
+	color: var(--slate);
 	font-size: 1rem;
 	font-weight: 300;
 	letter-spacing: 0.04em;
@@ -865,8 +861,8 @@ nav li a:focus {
 	margin-top: 52px;
 	padding: 15px 48px;
 	background: transparent;
-	color: var(--sage-deep);
-	border: 1px solid var(--sage-deep);
+	color: var(--navy);
+	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
 	letter-spacing: 0.26em;
@@ -880,9 +876,9 @@ nav li a:focus {
 
 .portfolio-button:hover,
 .portfolio-button:active {
-	background: var(--gold);
-	border-color: var(--gold);
-	color: var(--sage-deep);
+	background: var(--blue-dark);
+	border-color: var(--blue-dark);
+	color: var(--ivory);
 }
 
 @media (max-width: 900px) {
@@ -1043,7 +1039,7 @@ nav li a:focus {
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	background: var(--sage-deep);
+	background: var(--navy);
 	color: var(--white);
 	padding: 90px 5% 70px;
 }
@@ -1053,11 +1049,11 @@ nav li a:focus {
 }
 
 .testimonials-eyebrow {
-	color: rgba(255, 255, 255, 0.8);
+	color: var(--blue-light);
 }
 
 .testimonials-heading {
-	color: var(--gold);
+	color: var(--white);
 }
 
 .testimonials-heading em {
@@ -1110,7 +1106,7 @@ nav li a:focus {
 	font-size: 0.68rem;
 	letter-spacing: 0.22em;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.7);
+	color: var(--blue-light);
 	margin: 0;
 	font-family: var(--font-body);
 	font-weight: 400;
@@ -1138,9 +1134,9 @@ nav li a:focus {
 
 .carousel-btn:hover,
 .carousel-btn:active {
-	background: var(--gold);
-	border-color: var(--gold);
-	color: var(--sage-deep);
+	background: var(--blue-dark);
+	border-color: var(--blue-dark);
+	color: var(--white);
 }
 
 .carousel-btn:focus {
@@ -1168,7 +1164,7 @@ nav li a:focus {
 }
 
 .carousel-dot--active {
-	background: var(--gold);
+	background: var(--blue-light);
 	transform: scale(1.4);
 }
 
@@ -1190,13 +1186,13 @@ nav li a:focus {
 		border-color var(--transition-speed) ease;
 }
 
-/* Same hover as Send Inquiry: fills with gold. (At rest it's outlined,
-   since a dark sage button would vanish on this dark sage section.) */
+/* Same hover as Send Inquiry: fills with the deep hydrangea blue. (At rest
+   it's outlined, since a navy button would vanish on this navy section.) */
 .testimonials-button:hover,
 .testimonials-button:active {
-	background: var(--gold);
-	border-color: var(--gold);
-	color: var(--sage-deep);
+	background: var(--blue-dark);
+	border-color: var(--blue-dark);
+	color: var(--ivory);
 }
 
 .testimonials-button:focus {
@@ -1303,7 +1299,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: 1.6rem;
 	letter-spacing: 0.2em;
-	color: var(--gold-deep);
+	color: var(--blue);
 	line-height: 1;
 	margin-bottom: 14px;
 }
@@ -1314,12 +1310,12 @@ nav li a:focus {
 	font-weight: 400;
 	letter-spacing: 0.24em;
 	text-transform: uppercase;
-	color: var(--gold-deep);
+	color: var(--navy);
 	margin: 0 0 12px;
 }
 
 .process-step p {
-	color: var(--sage-text);
+	color: var(--slate);
 	font-weight: 300;
 	line-height: 1.75;
 	margin: 0;
@@ -1369,7 +1365,7 @@ nav li a:focus {
 	position: relative;
 	font-family: var(--font-display);
 	font-size: 1.35rem;
-	color: var(--sage-deep);
+	color: var(--navy);
 }
 
 .faq-question::after {
@@ -1381,7 +1377,7 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-weight: 300;
 	font-size: 1.4rem;
-	color: var(--gold-deep);
+	color: var(--blue);
 	transition: transform 0.35s ease;
 }
 
@@ -1394,7 +1390,7 @@ nav li a:focus {
 }
 
 .faq-question:focus-visible {
-	outline: 2px solid var(--gold-deep);
+	outline: 2px solid var(--blue);
 	outline-offset: 2px;
 }
 
@@ -1415,7 +1411,7 @@ nav li a:focus {
 
 .faq-answer p {
 	margin: 0 0 22px;
-	color: var(--sage-text);
+	color: var(--slate);
 	font-weight: 300;
 	line-height: 1.8;
 }
@@ -1441,7 +1437,7 @@ nav li a:focus {
 }
 
 .contact-header p {
-	color: var(--sage-text);
+	color: var(--slate);
 	font-size: 1rem;
 	font-weight: 300;
 	letter-spacing: 0.04em;
@@ -1474,7 +1470,7 @@ nav li a:focus {
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	font-weight: 500;
-	color: var(--sage-deep);
+	color: var(--navy);
 	font-family: var(--font-body);
 }
 
@@ -1491,7 +1487,7 @@ nav li a:focus {
 	font-size: 0.95rem;
 	font-family: var(--font-body);
 	font-weight: 300;
-	color: var(--sage-deep);
+	color: var(--navy);
 	transition: border-color var(--transition-speed) ease,
 		box-shadow var(--transition-speed) ease;
 	-webkit-appearance: none;
@@ -1506,13 +1502,13 @@ nav li a:focus {
 
 .contact-form input:hover,
 .contact-form textarea:hover {
-	border-color: var(--sage-pale);
+	border-color: var(--blue-light);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
 	outline: none;
-	border-color: var(--gold-deep);
+	border-color: var(--blue);
 	box-shadow: 0 0 0 3px var(--primary-color-alpha);
 }
 
@@ -1526,9 +1522,9 @@ nav li a:focus {
 .submit-button {
 	display: inline-block;
 	padding: 17px 60px;
-	background: var(--sage-deep);
+	background: var(--navy);
 	color: var(--ivory);
-	border: 1px solid var(--sage-deep);
+	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
 	letter-spacing: 0.26em;
@@ -1542,9 +1538,8 @@ nav li a:focus {
 
 .submit-button:hover,
 .submit-button:active {
-	background: var(--gold);
-	border-color: var(--gold);
-	color: var(--sage-deep);
+	background: var(--blue-dark);
+	border-color: var(--blue-dark);
 }
 
 .submit-button:disabled {
@@ -1556,7 +1551,7 @@ nav li a:focus {
 .form-note {
 	margin: 0;
 	font-size: 0.8rem;
-	color: var(--sage-text);
+	color: var(--slate);
 	font-weight: 300;
 }
 
@@ -1583,7 +1578,7 @@ nav li a:focus {
 }
 
 .submit-button:focus {
-	outline: 2px solid var(--gold-deep);
+	outline: 2px solid var(--blue);
 	outline-offset: 3px;
 }
 
@@ -1617,7 +1612,7 @@ nav li a:focus {
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
-	color: rgba(255, 255, 255, 0.8);
+	color: var(--blue-light);
 	font-weight: 400;
 	font-size: 0.82rem;
 	letter-spacing: 0.08em;
@@ -1636,22 +1631,22 @@ nav li a:focus {
 	font-weight: 400;
 	letter-spacing: 0.2em;
 	text-transform: uppercase;
-	color: var(--gold);
+	color: var(--white);
 	margin: 0 0 14px 0;
 	line-height: 1.2;
 }
 
 .page-title em {
 	font-style: italic;
-	color: var(--gold);
+	color: var(--blue-light);
 }
 
 .portfolio-header .page-title {
-	color: var(--sage-deep);
+	color: var(--navy);
 }
 
 .portfolio-header .page-title em {
-	color: var(--gold-deep);
+	color: var(--blue);
 }
 
 /* ======== PARTNERSHIPS / MEDIA KIT ======== */
@@ -1716,7 +1711,7 @@ nav li a:focus {
 	font-weight: 400;
 	letter-spacing: 0.24em;
 	text-transform: uppercase;
-	color: var(--gold-deep);
+	color: var(--navy);
 	margin: 0;
 	line-height: 1.1;
 }
@@ -1726,7 +1721,7 @@ nav li a:focus {
 	font-style: italic;
 	font-size: 1.15rem;
 	font-weight: 400;
-	color: var(--sage-text);
+	color: var(--blue-dark);
 	margin: 0;
 }
 
@@ -1734,7 +1729,7 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-size: 0.85rem;
 	letter-spacing: 0.02em;
-	color: var(--sage-text);
+	color: var(--slate);
 	margin: 0;
 }
 
@@ -1747,9 +1742,9 @@ nav li a:focus {
 	display: inline-block;
 	padding: 14px 36px;
 	margin-top: 8px;
-	background: var(--sage-deep);
+	background: var(--navy);
 	color: var(--ivory);
-	border: 1px solid var(--sage-deep);
+	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
 	letter-spacing: 0.26em;
@@ -1763,13 +1758,13 @@ nav li a:focus {
 
 .partnerships-btn:hover,
 .partnerships-btn:active {
-	background: var(--gold);
-	border-color: var(--gold);
-	color: var(--sage-deep);
+	background: var(--blue-dark);
+	border-color: var(--blue-dark);
+	color: var(--ivory);
 }
 
 .partnerships-btn:focus {
-	outline: 2px solid var(--gold-deep);
+	outline: 2px solid var(--blue);
 	outline-offset: 3px;
 }
 
@@ -1777,7 +1772,7 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-size: 1.05rem;
 	line-height: 1.85;
-	color: var(--sage-text);
+	color: var(--slate);
 	font-weight: 300;
 	margin: 0;
 	max-width: 680px;
@@ -1799,7 +1794,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: 1.6rem;
 	font-weight: 400;
-	color: var(--gold-deep);
+	color: var(--navy);
 	margin: 0 0 8px 0;
 }
 
@@ -1807,13 +1802,13 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-size: 0.95rem;
 	line-height: 1.7;
-	color: var(--sage-text);
+	color: var(--slate);
 	margin: 0;
 	font-weight: 300;
 }
 
 .partnerships-why {
-	border-left: 3px solid var(--gold-deep);
+	border-left: 3px solid var(--blue);
 	padding: 4px 0 4px 28px;
 }
 
@@ -1821,7 +1816,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: clamp(1.4rem, 3vw, 1.85rem);
 	font-weight: 400;
-	color: var(--gold-deep);
+	color: var(--navy);
 	margin: 0 0 12px 0;
 	line-height: 1.3;
 }
@@ -1830,7 +1825,7 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-size: 0.98rem;
 	line-height: 1.85;
-	color: var(--sage-text);
+	color: var(--slate);
 	font-weight: 300;
 	margin: 0;
 }
@@ -1854,7 +1849,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: 1.3rem;
 	font-weight: 400;
-	color: var(--gold-deep);
+	color: var(--navy);
 	margin: 0 0 20px 0;
 }
 
@@ -1873,7 +1868,7 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-size: 0.95rem;
 	line-height: 1.6;
-	color: var(--sage-text);
+	color: var(--slate);
 	font-weight: 300;
 }
 
@@ -1884,7 +1879,7 @@ nav li a:focus {
 	top: 0.7em;
 	width: 10px;
 	height: 1px;
-	background: var(--gold-deep);
+	background: var(--blue);
 }
 
 .partnerships-tags {
@@ -1897,7 +1892,7 @@ nav li a:focus {
 	display: inline-block;
 	padding: 9px 16px;
 	border: 1px solid var(--border);
-	color: var(--sage-text);
+	color: var(--slate);
 	font-family: var(--font-body);
 	font-size: 0.68rem;
 	letter-spacing: 0.1em;
@@ -1919,7 +1914,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: clamp(1.9rem, 4vw, 2.75rem);
 	font-weight: 300;
-	color: var(--gold-deep);
+	color: var(--navy);
 	margin: 0;
 }
 
@@ -1930,7 +1925,7 @@ nav li a:focus {
 .partnerships-closer-website {
 	font-family: var(--font-body);
 	font-size: 0.85rem;
-	color: var(--sage-text);
+	color: var(--slate);
 	letter-spacing: 0.02em;
 }
 
@@ -2005,7 +2000,7 @@ nav li a:focus {
 	}
 }
 
-/* Buttons: no grey tap flash on phones; the gold hover/active fill is the
+/* Buttons: no grey tap flash on phones; the blue hover/active fill is the
    feedback instead. */
 .about-cta,
 .portfolio-button,
@@ -2123,7 +2118,7 @@ nav li a:focus {
 	.stats-bar.partnerships-stats {
 		padding: 7pt 0;
 		margin: 7pt 0;
-		background: var(--sage-deep) !important;
+		background: var(--navy) !important;
 	}
 
 	.partnerships-stats .stat-number {
@@ -2150,7 +2145,7 @@ nav li a:focus {
 	}
 
 	.partnerships-why {
-		border-left-color: var(--gold-deep) !important;
+		border-left-color: var(--blue) !important;
 		padding: 1pt 0 1pt 14pt;
 	}
 
@@ -2189,7 +2184,7 @@ nav li a:focus {
 	}
 
 	.partnerships-btn.partnerships-closer-email {
-		background: var(--gold-deep) !important;
+		background: var(--blue) !important;
 		color: var(--white) !important;
 		padding: 6pt 18pt;
 		font-size: 8.5pt;

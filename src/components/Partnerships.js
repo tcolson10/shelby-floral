@@ -23,7 +23,7 @@ function Partnerships() {
 	return (
 		<div className="partnerships-page full-page">
 			<div className="page-nav">
-				<Link to="/" className="back-link" style={{ color: "var(--gold-ink)" }}>
+				<Link to="/" className="back-link" style={{ color: "var(--blue)" }}>
 					← Back to Home
 				</Link>
 			</div>
