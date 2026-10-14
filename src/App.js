@@ -5,14 +5,47 @@ import {
 	Link,
 	useNavigate,
 	useLocation,
+	Navigate,
 } from "react-router-dom";
 import ReactGA4 from "react-ga4";
 import "./App.css";
 import LandingPage from "./components/LandingPage";
-import About from "./components/About";
 import PortfolioFull from "./components/PortfolioFull";
 import TestimonialsFull from "./components/TestimonialsFull";
 import Partnerships from "./components/Partnerships";
+
+const DEFAULT_DESCRIPTION =
+	"Shelby Floral is a Utah wedding florist creating custom bouquets, arches, ceremony installations and reception florals. Request a quote today.";
+
+// Browser-tab titles and search descriptions per route. /partnerships sets
+// its own from src/data/mediaKitData.js.
+const PAGE_META = {
+	"/": { title: "Shelby Floral | Utah Wedding Florist" },
+	"/portfolio": { title: "Portfolio | Shelby Floral" },
+	"/about": { title: "About Shelby | Shelby Floral" },
+	"/testimonials": { title: "Testimonials | Shelby Floral" },
+	"/contact": { title: "Request a Quote | Shelby Floral" },
+	"/faq": { title: "FAQ | Shelby Floral" },
+	"/full-portfolio": {
+		title: "Full Portfolio | Shelby Floral",
+		description: "Bouquets, arches, aisle florals and reception designs from Shelby Floral weddings across Utah.",
+	},
+	"/full-testimonials": {
+		title: "Client Reviews | Shelby Floral",
+		description: "What couples say about working with Shelby Floral, a Utah wedding florist.",
+	},
+};
+
+const SECTION_ROUTES = ["", "home", "portfolio", "about", "testimonials", "contact", "faq"];
+
+const NAV_ITEMS = [
+	["home", "Home"],
+	["portfolio", "Portfolio"],
+	["about", "About"],
+	["testimonials", "Testimonials"],
+	["contact", "Contact"],
+	["faq", "FAQ"],
+];
 
 function App() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,6 +71,16 @@ function App() {
 			page_path: location.pathname + location.search,
 		});
 	}, [location]);
+
+	// Per-page title and description
+	useEffect(() => {
+		const meta = PAGE_META[location.pathname];
+		if (!meta) return;
+		document.title = meta.title;
+		document
+			.querySelector('meta[name="description"]')
+			?.setAttribute("content", meta.description ?? DEFAULT_DESCRIPTION);
+	}, [location.pathname]);
 
 	// Transparent nav: track scroll position
 	useEffect(() => {
@@ -77,11 +120,7 @@ function App() {
 	// Scroll to section based on URL path when location changes
 	useEffect(() => {
 		const path = location.pathname.replace(/^\//, "");
-		if (
-			["", "home", "pricing", "portfolio", "testimonials", "contact"].includes(
-				path
-			)
-		) {
+		if (SECTION_ROUTES.includes(path)) {
 			const sectionId = path === "" ? "home" : path;
 			setTimeout(() => scrollToSection(sectionId), 100);
 		}
@@ -92,18 +131,22 @@ function App() {
 		navigate(path === "home" ? "/" : `/${path}`);
 	};
 
-	const isHome = location.pathname === "/";
+	// Every section route (/about, /contact…) renders the homepage, hero included.
+	const isHome = SECTION_ROUTES.includes(location.pathname.replace(/^\//, ""));
 	const navTransparent = isHome && !scrolled && !isMenuOpen;
 
 	return (
 		<div className="app-container">
 			<header className={navTransparent ? "nav-transparent" : "nav-scrolled"}>
 				<Link to="/" className="webTitle" onClick={() => setIsMenuOpen(false)}>
-					<span className="navMonogram">SF</span>
+					<span className="navMonogram" aria-hidden="true">SF</span>
+					<span className="sr-only">Shelby Floral home</span>
 				</Link>
 				<button
 					className={`hamburger ${isMenuOpen ? "active" : ""}`}
 					onClick={() => setIsMenuOpen(!isMenuOpen)}
+					aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+					aria-expanded={isMenuOpen}
 				>
 					<span className="hamburger-line"></span>
 					<span className="hamburger-line"></span>
@@ -111,45 +154,31 @@ function App() {
 				</button>
 				<nav className={isMenuOpen ? "nav-active" : ""}>
 					<ul>
-						<li>
-							<Link to="/" onClick={() => handleNavigation("home")}>
-								Home
-							</Link>
-						</li>
-						<li>
-							<Link
-								to="/portfolio"
-								onClick={() => handleNavigation("portfolio")}
-							>
-								Portfolio
-							</Link>
-						</li>
-						<li>
-							<Link
-								to="/testimonials"
-								onClick={() => handleNavigation("testimonials")}
-							>
-								Testimonials
-							</Link>
-						</li>
-						<li>
-							<Link to="/contact" onClick={() => handleNavigation("contact")}>
-								Contact
-							</Link>
-						</li>
+						{NAV_ITEMS.map(([path, label]) => (
+							<li key={path}>
+								<Link
+									to={path === "home" ? "/" : `/${path}`}
+									onClick={() => handleNavigation(path)}
+								>
+									{label}
+								</Link>
+							</li>
+						))}
 					</ul>
 				</nav>
 			</header>
 			<main>
 				<Routes>
 					<Route path="/" element={<LandingPage />} />
-					<Route path="/about" element={<About />} />
+					<Route path="/about" element={<LandingPage />} />
 					<Route path="/portfolio" element={<LandingPage />} />
 					<Route path="/testimonials" element={<LandingPage />} />
 					<Route path="/contact" element={<LandingPage />} />
+					<Route path="/faq" element={<LandingPage />} />
 					<Route path="/full-portfolio" element={<PortfolioFull />} />
 					<Route path="/full-testimonials" element={<TestimonialsFull />} />
 					<Route path="/partnerships" element={<Partnerships />} />
+					<Route path="*" element={<Navigate to="/" replace />} />
 				</Routes>
 			</main>
 			<footer className="site-footer">
@@ -170,8 +199,6 @@ function App() {
 				<div className="footer-email">
 					<a
 						href="mailto:shelby@shelbyfloral.com"
-						target="_blank"
-						rel="noopener noreferrer"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="email-icon">
 							<rect x="2" y="4" width="20" height="16" rx="2"/>
@@ -180,6 +207,9 @@ function App() {
 						<span>shelby@shelbyfloral.com</span>
 					</a>
 				</div>
+				<p className="footer-meta">
+					Wedding &amp; event florals across Utah · © {new Date().getFullYear()} Shelby Floral Company
+				</p>
 			</footer>
 		</div>
 	);

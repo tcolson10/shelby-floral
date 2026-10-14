@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Shelby Floral
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Website for Shelby Floral Company, a Utah wedding florist: [shelbyfloral.com](https://shelbyfloral.com). React (Create React App), hosted on Vercel.
 
-## Available Scripts
+## Running it
 
-In the project directory, you can run:
+```sh
+npm install
+npm start        # dev server at http://localhost:3000
+npm test         # smoke tests
+npm run build    # production build in build/
+```
 
-### `yarn start`
+## Where things live
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| To change… | Edit |
+| --- | --- |
+| Gallery photos and their descriptions | `src/data/images.js` |
+| Reviews | `src/data/testimonials.js` (real client words only) |
+| Bio, process steps, FAQ | `src/data/siteContent.js` |
+| Partnerships / media kit page | `src/data/mediaKitData.js` |
+| Colors and fonts | variables at the top of `src/index.css` |
+| Contact form destination | `FORM_ENDPOINT` in `src/components/Contact.js` (Formspree) |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Adding a photo
 
-### `yarn test`
+1. Put the file in `public/images/portfolio/` (about 1100px on the long side is plenty).
+2. Add it to `images` in `src/data/images.js` with its width, height and a short description, then add the filename to `homeGallery` or `fullGallery`.
+3. Run `npm run optimize-images` to create the smaller WebP copies the site serves.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Analytics
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Google Analytics 4 (`src/App.js`) and Microsoft Clarity (`public/index.html`).

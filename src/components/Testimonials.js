@@ -1,46 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { featured as testimonialsData } from "../data/testimonials";
 
-const testimonialsData = [
-	{
-		text: "Shelby Floral made my dream bouquet for my wedding! The flowers were beautifully put together and made on time so I never had to worry about anything. I loved them, I still look at the pics at least once a week they just were so gorgeous. They were the perfect final touch!",
-		name: "Kensie W.",
-	},
-	{
-		text: "Shelby Floral is an absolute dream to work with!! They were able to understand and execute my wedding floral vision perfectly. They are SO knowledgeable and made the planning so much fun, instead of stressful. I strongly recommend them to everyone I know.",
-		name: "Grace G.",
-	},
-	{
-		text: "Shelby Floral was incredible! I feel like the vision I had was kind of scattered, but they executed it perfectly and exceeded any expectations I had. I still get so many compliments on the florals from my wedding!",
-		name: "Lacee J.",
-	},
-	{
-		text: "10/10. Booked Shelby Floral after seeing their work on Instagram and they did not disappoint. My arch was the most beautiful thing I have ever seen in my life and I am not exaggerating.",
-		name: "Tatum R.",
-	},
-	{
-		text: "Getting married is stressful. Shelby Floral was one of the few parts of the process that was genuinely fun. They were excited about our vision, communicated clearly, and showed up and made it all real.",
-		name: "Peyton A.",
-	},
-	{
-		text: "I told them I wanted simple and romantic and they nailed it completely. My bouquet was exactly what I had been picturing and I couldn't stop staring at it all night!!",
-		name: "Jess T.",
-	},
-	{
-		text: "I could not recommend them more!! Everything was so beautiful and they were so easy to work with the whole time. Fast responses, gorgeous results, just an amazing experience overall.",
-		name: "Lauren S.",
-	},
-];
+const ADVANCE_MS = 7000;
 
 function Testimonials() {
 	const [current, setCurrent] = useState(0);
+	const [paused, setPaused] = useState(false);
 
 	useEffect(() => {
+		// Hold still while someone is reading (hovering or focused inside),
+		// and never auto-advance for visitors who ask for reduced motion.
+		const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		if (paused || reduceMotion) return;
 		const timer = setInterval(() => {
 			setCurrent((c) => (c + 1) % testimonialsData.length);
-		}, 7000);
+		}, ADVANCE_MS);
 		return () => clearInterval(timer);
-	}, [current]);
+	}, [current, paused]);
 
 	const prev = () =>
 		setCurrent((c) => (c - 1 + testimonialsData.length) % testimonialsData.length);
@@ -54,15 +31,22 @@ function Testimonials() {
 					What our <em>clients say</em>
 				</h2>
 			</div>
-			<div className="testimonials-carousel">
+			<div
+				className="testimonials-carousel"
+				onMouseEnter={() => setPaused(true)}
+				onMouseLeave={() => setPaused(false)}
+				onFocus={() => setPaused(true)}
+				onBlur={() => setPaused(false)}
+			>
 				<button className="carousel-btn" onClick={prev} aria-label="Previous testimonial">
 					&#8249;
 				</button>
-				<div className="carousel-track">
+				<div className="carousel-track" aria-live={paused ? "polite" : "off"}>
 					{testimonialsData.map((t, i) => (
 						<div
-							key={i}
+							key={t.name}
 							className={`carousel-slide${i === current ? " carousel-slide--active" : ""}`}
+							aria-hidden={i !== current}
 						>
 							<blockquote>&#8220;{t.text}&#8221;</blockquote>
 							<p className="client-name">{t.name}</p>
@@ -74,12 +58,12 @@ function Testimonials() {
 				</button>
 			</div>
 			<div className="carousel-dots">
-				{testimonialsData.map((_, i) => (
+				{testimonialsData.map((t, i) => (
 					<button
-						key={i}
+						key={t.name}
 						className={`carousel-dot${i === current ? " carousel-dot--active" : ""}`}
 						onClick={() => setCurrent(i)}
-						aria-label={`Go to testimonial ${i + 1}`}
+						aria-label={`Show review from ${t.name}`}
 					/>
 				))}
 			</div>

@@ -41,6 +41,11 @@ html = html.replace(
 	`<meta name="description" content="${description}" />`
 );
 
+// Drop the homepage's canonical/Open Graph/Twitter tags so the page-specific
+// ones below are the only ones crawlers see.
+html = html.replace(/<link rel="canonical"[^>]*>/g, "");
+html = html.replace(/<meta (property="og:|name="twitter:)[^>]*>/g, "");
+
 const extraTags = `
     <link rel="canonical" href="${PAGE_URL}" />
     <meta property="og:type" content="website" />

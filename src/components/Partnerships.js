@@ -50,7 +50,7 @@ function Partnerships() {
 					</button>
 				</div>
 				<div className="partnerships-masthead-image">
-					<img src={mediaKitData.header.image} alt="" loading="eager" fetchpriority="high" />
+					<img src={mediaKitData.header.image} alt="Shelby holding white flowers" loading="eager" fetchpriority="high" />
 				</div>
 			</div>
 
