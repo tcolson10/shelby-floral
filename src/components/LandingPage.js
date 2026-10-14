@@ -1,4 +1,4 @@
-import Photo from "./Photo";
+import SocialLinks from "./SocialLinks";
 import Portfolio from "./Portfolio";
 import About from "./About";
 import Process from "./Process";
@@ -22,14 +22,8 @@ const LandingPage = () => {
 		<div>
 			{/* Hero */}
 			<div className="hero" id="home">
-				<Photo
-					file="hero-hydrangeas.jpg"
-					sizes="100vw"
-					className="hero-bg"
-					fetchpriority="high"
-				/>
-				<div className="hero-overlay" />
 				<div className="hero-content">
+					<span className="hero-flower hero-fade-in" style={{ animationDelay: "0ms" }} aria-hidden="true" />
 					<p className="hero-eyebrow hero-fade-in" style={{ animationDelay: "100ms" }}>
 						Utah Wedding Florist
 					</p>
@@ -48,6 +42,7 @@ const LandingPage = () => {
 						</button>
 					</div>
 				</div>
+				<SocialLinks className="hero-social hero-fade-in" />
 			</div>
 
 			<div id="portfolio">
