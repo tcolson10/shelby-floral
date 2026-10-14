@@ -30,28 +30,15 @@ const LandingPage = () => {
 				/>
 				<div className="hero-overlay" />
 				<div className="hero-content">
-					<span className="hero-eyebrow hero-fade-in" style={{ animationDelay: "150ms" }}>Utah Wedding Florist</span>
-					<h1 className="hero-headline">
-						<em>
-							{"Shelby Floral".split("").map((char, i) => (
-								<span key={i} className="hero-letter" style={{ animationDelay: `${275 + i * 45}ms` }}>
-									{char === " " ? " " : char}
-								</span>
-							))}
-						</em>
+					<p className="hero-eyebrow hero-fade-in" style={{ animationDelay: "100ms" }}>
+						Utah Wedding Florist
+					</p>
+					<h1 className="hero-headline hero-fade-in" style={{ animationDelay: "350ms" }}>
+						<span>Shelby</span> <span>Floral</span>
 					</h1>
-					<p className="hero-tagline hero-fade-in" style={{ animationDelay: "1150ms" }}>Custom floral design for weddings and events across Utah</p>
-					<div className="hero-actions hero-fade-in" style={{ animationDelay: "1150ms" }}>
-						<button
-							className="hero-btn-primary"
-							onClick={() => scrollTo("portfolio")}
-						>
-							View Our Work
-						</button>
-						<button className="hero-btn-outline" onClick={toContact}>
-							Get In Touch
-						</button>
-					</div>
+					<p className="hero-tagline hero-fade-in" style={{ animationDelay: "650ms" }}>
+						Wedding &amp; Event Design
+					</p>
 				</div>
 			</div>
 

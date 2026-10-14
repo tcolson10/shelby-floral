@@ -19,7 +19,7 @@ function TestimonialsFull() {
             <div className="testimonials-list">
                 {testimonialsData.map((testimonial, index) => (
                     <div key={index} className="testimonial-item">
-                        <blockquote>"{testimonial.text}"</blockquote>
+                        <blockquote>&#8220;{testimonial.text}&#8221;</blockquote>
                         <p className="client-name">{testimonial.name}</p>
                     </div>
                 ))}

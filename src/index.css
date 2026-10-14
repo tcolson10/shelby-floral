@@ -112,18 +112,10 @@ select:focus {
 	border-width: 0;
 }
 
-.webTitle,
-.webTitle:visited,
-.webTitle:hover,
-.webTitle:active {
-	text-decoration: none;
-	color: inherit;
-}
-
 /* ======== HEADER & NAVIGATION ======== */
 header {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 	position: fixed;
 	width: 100%;
@@ -134,61 +126,17 @@ header {
 		box-shadow var(--transition-speed) ease;
 }
 
-/* Transparent state — over hero */
+/* Transparent state — over hero: just the centered links, no bar */
 header.nav-transparent {
-	background: rgba(255, 255, 255, 0.06);
-	backdrop-filter: blur(6px);
-	-webkit-backdrop-filter: blur(6px);
+	background: transparent;
 	box-shadow: none;
 }
 
 /* Scrolled / solid state */
 header.nav-scrolled {
-	background: var(--white);
-	box-shadow: 0 1px 24px rgba(0, 0, 0, 0.07);
+	background: var(--cream);
+	box-shadow: 0 1px 0 var(--border);
 }
-
-/* Monogram logo */
-.navMonogram {
-	font-family: var(--font-display);
-	font-size: 2.1rem;
-	font-style: italic;
-	font-weight: 300;
-	letter-spacing: 0.06em;
-	color: var(--navy);
-	margin-left: 24px;
-	line-height: 1;
-	display: block;
-	transition: color var(--transition-speed) ease,
-		opacity var(--transition-speed) ease;
-}
-
-header.nav-transparent .navMonogram {
-	color: var(--white);
-}
-
-.webTitle:focus {
-	outline: none;
-}
-
-.webTitle:hover .navMonogram {
-	opacity: 0.7;
-}
-
-.navMonogram::after {
-	content: "";
-	display: block;
-	width: 0;
-	height: 1px;
-	background: currentColor;
-	transition: width var(--transition-speed) ease;
-	margin-top: 2px;
-}
-
-.webTitle:hover .navMonogram::after {
-	width: 100%;
-}
-
 
 /* Hamburger */
 .hamburger {
@@ -237,12 +185,11 @@ header.nav-transparent .hamburger-line {
 nav ul {
 	list-style: none;
 	display: flex;
-	gap: 32px;
-	font-size: 0.78rem;
+	gap: clamp(28px, 5vw, 72px);
+	font-size: 0.8rem;
 	font-weight: 400;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
-	margin-right: 28px;
+	letter-spacing: 0.08em;
+	margin: 0;
 	padding: 0;
 }
 
@@ -318,7 +265,7 @@ nav li a:focus {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: rgba(255, 255, 255, 0.98);
+		background-color: rgba(250, 248, 245, 0.98);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -364,13 +311,13 @@ nav li a:focus {
 		display: block;
 		padding: 18px 0;
 		margin: 0;
-		font-size: 22px;
-		letter-spacing: 0.03em;
+		font-size: 1.3rem;
+		letter-spacing: 0.24em;
 		font-family: var(--font-display);
 		font-weight: 400;
 		width: 100%;
 		color: var(--navy);
-		text-transform: none;
+		text-transform: uppercase;
 	}
 
 	nav li a::after {
@@ -387,69 +334,65 @@ nav li a:focus {
 /* ======== FOOTER ======== */
 .site-footer {
 	display: flex;
-	justify-content: center;
-	gap: 80px;
-	padding: 56px 10%;
-	background: var(--navy);
+	flex-direction: column;
 	align-items: center;
-	flex-wrap: wrap;
+	text-align: center;
+	padding: 80px 24px 40px;
+	background: var(--navy);
+	color: var(--ivory);
+}
+
+.footer-name {
+	margin: 0 -0.3em 0 0; /* offset trailing letter-spacing */
+	font-family: var(--font-display);
+	font-size: clamp(1.4rem, 3vw, 2rem);
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+	color: var(--ivory);
+}
+
+@media (max-width: 640px) {
+	.footer-meta span {
+		display: block;
+	}
+
+	.footer-meta .footer-meta-dot {
+		display: none;
+	}
+
+	.footer-meta span + span + span {
+		margin-top: 8px;
+	}
+}
+
+.footer-icons {
+	display: flex;
+	gap: 36px;
+	margin-top: 32px;
+}
+
+.footer-icons a {
+	display: inline-flex;
+	color: rgba(255, 255, 255, 0.75);
+	transition: color var(--transition-speed) ease;
+}
+
+.footer-icons a:hover,
+.footer-icons a:focus {
+	color: var(--white);
+}
+
+.footer-icons svg {
+	width: 22px;
+	height: 22px;
 }
 
 .footer-meta {
-	flex-basis: 100%;
-	margin: 0;
-	text-align: center;
-	font-size: 0.75rem;
-	letter-spacing: 0.06em;
+	margin: 56px 0 0;
+	font-size: 0.68rem;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
 	color: rgba(255, 255, 255, 0.4);
-}
-
-.footer-email,
-.footer-instagram {
-	font-size: 14px;
-	display: flex;
-	align-items: center;
-}
-
-.footer-email a,
-.footer-instagram a {
-	color: rgba(255, 255, 255, 0.55);
-	text-decoration: none;
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	letter-spacing: 0.04em;
-	transition: color var(--transition-speed) ease,
-		transform var(--transition-speed) ease;
-}
-
-.footer-email a:hover,
-.footer-instagram a:hover,
-.footer-email a:focus,
-.footer-instagram a:focus {
-	color: var(--blue-light);
-	transform: translateY(-2px);
-}
-
-.instagram-logo,
-.email-icon {
-	width: 26px;
-	height: 26px;
-	flex-shrink: 0;
-}
-
-@media (max-width: 768px) {
-	.site-footer {
-		flex-direction: column;
-		gap: 28px;
-		padding: 48px 24px;
-	}
-
-	.footer-email,
-	.footer-instagram {
-		justify-content: center;
-		font-size: 14px;
-	}
 }
 
 /* ======== HERO ======== */
@@ -492,14 +435,13 @@ nav li a:focus {
 	width: 100%;
 	height: 100vh;
 	height: 100lvh;
-	z-index: 1;
+	z-index: 0;
 	background: linear-gradient(
 		to bottom,
-		rgba(15, 12, 8, 0.22) 0%,
-		rgba(15, 12, 8, 0.52) 55%,
-		rgba(15, 12, 8, 0.65) 100%
+		rgba(16, 26, 40, 0.45) 0%,
+		rgba(16, 26, 40, 0.55) 55%,
+		rgba(16, 26, 40, 0.7) 100%
 	);
-	z-index: 0;
 }
 
 .hero-content {
@@ -508,52 +450,12 @@ nav li a:focus {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 0 32px;
-}
-
-.hero-eyebrow {
-	font-family: var(--font-body);
-	font-size: 0.85rem;
-	letter-spacing: 0.32em;
-	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.7);
-	margin-bottom: 20px;
-	display: block;
-}
-
-.hero-headline {
-	font-family: var(--font-display);
-	font-size: clamp(4.6rem, 12vw, 10.5rem);
-	font-weight: 300;
-	line-height: 1;
-	color: var(--white);
-	margin: 0 0 20px 0;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-.hero-headline em {
-	font-style: italic;
-	font-weight: 300;
-	display: block;
-}
-
-/* Hero spell-out animation */
-.hero-letter {
-	display: inline-block;
-	opacity: 0;
-	animation: heroLetterIn 0.38s ease forwards;
+	padding: 0 24px;
 }
 
 .hero-fade-in {
 	opacity: 0;
-	animation: heroFadeIn 0.65s ease forwards;
-}
-
-@keyframes heroLetterIn {
-	from { opacity: 0; transform: translateY(10px); }
-	to   { opacity: 1; transform: translateY(0); }
+	animation: heroFadeIn 0.8s ease forwards;
 }
 
 @keyframes heroFadeIn {
@@ -561,90 +463,39 @@ nav li a:focus {
 	to   { opacity: 1; transform: translateY(0); }
 }
 
-.hero-tagline {
-	font-size: 1.15rem;
-	color: rgba(255, 255, 255, 0.7);
-	letter-spacing: 0.14em;
-	margin: 0 0 44px 0;
-	font-weight: 300;
-}
-
-.hero-actions {
-	display: flex;
-	gap: 16px;
-	align-items: center;
-	flex-wrap: wrap;
-	justify-content: center;
-}
-
-.hero-btn-primary {
-	background: var(--white);
-	color: var(--navy);
-	border: none;
-	padding: 18px 50px;
+.hero-eyebrow {
+	margin: 0 0 28px;
 	font-family: var(--font-body);
-	font-size: 0.85rem;
-	letter-spacing: 0.18em;
+	font-size: clamp(0.68rem, 1.4vw, 0.85rem);
+	letter-spacing: 0.32em;
 	text-transform: uppercase;
-	cursor: pointer;
-	font-weight: 500;
-	transition: background var(--transition-speed) ease,
-		transform var(--transition-speed) ease;
+	color: rgba(255, 255, 255, 0.85);
 }
 
-.hero-btn-primary:hover {
-	background: var(--ivory);
-	transform: translateY(-2px);
-}
-
-.hero-btn-primary:focus {
-	outline: 2px solid rgba(255, 255, 255, 0.7);
-	outline-offset: 3px;
-}
-
-.hero-btn-outline {
-	background: transparent;
-	color: var(--white);
-	border: 1px solid rgba(255, 255, 255, 0.55);
-	padding: 18px 50px;
-	font-family: var(--font-body);
-	font-size: 0.85rem;
-	letter-spacing: 0.18em;
-	text-transform: uppercase;
-	cursor: pointer;
+.hero-headline {
+	font-family: var(--font-display);
 	font-weight: 400;
-	transition: background var(--transition-speed) ease,
-		border-color var(--transition-speed) ease,
-		transform var(--transition-speed) ease;
+	font-size: clamp(2.6rem, 6.5vw, 6rem);
+	letter-spacing: 0.3em;
+	/* letter-spacing adds space after the last letter too; offset it to stay centered */
+	margin: 0 -0.3em 0 0;
+	text-transform: uppercase;
+	line-height: 1;
+	color: var(--ivory);
 }
 
-.hero-btn-outline:hover {
-	background: rgba(255, 255, 255, 0.12);
-	border-color: rgba(255, 255, 255, 0.9);
-	transform: translateY(-2px);
-}
-
-.hero-btn-outline:focus {
-	outline: 2px solid rgba(255, 255, 255, 0.7);
-	outline-offset: 3px;
+.hero-tagline {
+	margin: 22px 0 0;
+	font-family: var(--font-body);
+	font-size: clamp(0.68rem, 1.6vw, 0.9rem);
+	letter-spacing: 0.32em;
+	text-transform: uppercase;
+	color: rgba(255, 255, 255, 0.85);
 }
 
 @media (max-width: 768px) {
 	.hero {
 		min-height: 100svh;
-	}
-
-	.hero-headline {
-		font-size: clamp(3.2rem, 14vw, 5rem);
-	}
-
-	/* Phones keep the original, smaller hero text sizes. */
-	.hero-eyebrow {
-		font-size: 0.68rem;
-	}
-
-	.hero-tagline {
-		font-size: 0.9rem;
 	}
 
 	/* Trim the top of the photo on phones: make it 12% taller than the
@@ -655,22 +506,14 @@ nav li a:focus {
 		height: 112vh;
 		height: 112lvh;
 	}
+}
 
-	.hero-content {
-		padding: 0 20px;
-	}
-
-	/* Buttons always sit side by side on phones, even narrow ones. */
-	.hero-actions {
-		flex-wrap: nowrap;
-		gap: 10px;
-	}
-
-	.hero-btn-primary,
-	.hero-btn-outline {
-		padding: 12px 18px;
-		font-size: 0.62rem;
-		letter-spacing: 0.14em;
+/* On phones the name stays on one line, sized to the screen width. */
+@media (max-width: 640px) {
+	.hero-headline {
+		font-size: 8.3vw;
+		letter-spacing: 0.24em;
+		margin-right: -0.24em;
 		white-space: nowrap;
 	}
 }
@@ -742,26 +585,35 @@ nav li a:focus {
 .section-eyebrow {
 	display: block;
 	font-family: var(--font-body);
-	font-size: 0.65rem;
-	letter-spacing: 0.28em;
+	font-size: 0.72rem;
+	letter-spacing: 0.32em;
 	text-transform: uppercase;
 	color: var(--blue);
-	margin-bottom: 14px;
+	margin-bottom: 18px;
 	font-weight: 400;
 }
 
 .section-heading {
 	font-family: var(--font-display);
-	font-size: clamp(2rem, 4vw, 3rem);
-	font-weight: 300;
+	font-size: clamp(1.7rem, 3.4vw, 2.7rem);
+	font-weight: 400;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
 	color: var(--navy);
-	margin: 0 0 20px 0;
-	line-height: 1.1;
+	margin: 0 0 22px 0;
+	line-height: 1.25;
 }
 
 .section-heading em {
-	font-style: italic;
-	color: var(--blue);
+	font-style: normal;
+	color: inherit;
+}
+
+@media (max-width: 640px) {
+	.section-heading {
+		font-size: 1.55rem;
+		letter-spacing: 0.14em;
+	}
 }
 
 /* ======== ABOUT SECTION ======== */
@@ -803,23 +655,24 @@ nav li a:focus {
 	display: inline-block;
 	align-self: flex-start;
 	margin-top: 12px;
-	padding: 14px 36px;
-	background: var(--blue);
-	color: var(--white);
-	border: none;
+	padding: 15px 40px;
+	background: transparent;
+	color: var(--navy);
+	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
-	letter-spacing: 0.18em;
+	letter-spacing: 0.26em;
 	text-transform: uppercase;
+	font-weight: 400;
 	cursor: pointer;
-	font-weight: 500;
+	text-decoration: none;
 	transition: background var(--transition-speed) ease,
-		transform var(--transition-speed) ease;
+		color var(--transition-speed) ease;
 }
 
 .about-cta:hover {
-	background: var(--blue-dark);
-	transform: translateY(-2px);
+	background: var(--navy);
+	color: var(--ivory);
 }
 
 .about-cta:focus {
@@ -938,24 +791,22 @@ nav li a:focus {
 	margin-top: 52px;
 	padding: 15px 48px;
 	background: transparent;
-	color: var(--blue);
-	border: 1px solid var(--blue);
+	color: var(--navy);
+	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
-	letter-spacing: 0.18em;
+	letter-spacing: 0.26em;
 	text-transform: uppercase;
-	font-weight: 500;
+	font-weight: 400;
 	cursor: pointer;
 	text-decoration: none;
 	transition: background var(--transition-speed) ease,
-		color var(--transition-speed) ease,
-		transform var(--transition-speed) ease;
+		color var(--transition-speed) ease;
 }
 
 .portfolio-button:hover {
-	background: var(--blue);
-	color: var(--white);
-	transform: translateY(-2px);
+	background: var(--navy);
+	color: var(--ivory);
 }
 
 @media (max-width: 900px) {
@@ -1134,7 +985,7 @@ nav li a:focus {
 }
 
 .testimonials-heading em {
-	color: var(--blue-light);
+	color: inherit;
 }
 
 .testimonials-carousel {
@@ -1252,7 +1103,7 @@ nav li a:focus {
 	color: rgba(255, 255, 255, 0.75);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
-	letter-spacing: 0.18em;
+	letter-spacing: 0.26em;
 	text-transform: uppercase;
 	cursor: pointer;
 	text-decoration: none;
@@ -1265,7 +1116,6 @@ nav li a:focus {
 .testimonials-button:focus {
 	border-color: rgba(255, 255, 255, 0.7);
 	color: var(--white);
-	transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
@@ -1361,19 +1211,21 @@ nav li a:focus {
 .process-number {
 	display: block;
 	font-family: var(--font-display);
-	font-style: italic;
-	font-size: 2.6rem;
+	font-size: 1.6rem;
+	letter-spacing: 0.2em;
 	color: var(--blue);
 	line-height: 1;
-	margin-bottom: 12px;
+	margin-bottom: 14px;
 }
 
 .process-title {
 	font-family: var(--font-display);
-	font-size: 1.6rem;
+	font-size: 1.25rem;
 	font-weight: 400;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
 	color: var(--navy);
-	margin: 0 0 10px;
+	margin: 0 0 12px;
 }
 
 .process-step p {
@@ -1583,23 +1435,24 @@ nav li a:focus {
 
 .submit-button {
 	display: inline-block;
-	padding: 16px 56px;
-	background: var(--blue);
-	color: var(--white);
-	border: none;
+	padding: 17px 60px;
+	background: var(--navy);
+	color: var(--ivory);
+	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
-	letter-spacing: 0.18em;
+	letter-spacing: 0.26em;
 	text-transform: uppercase;
-	font-weight: 500;
+	font-weight: 400;
 	cursor: pointer;
+	text-decoration: none;
 	transition: background var(--transition-speed) ease,
-		transform var(--transition-speed) ease;
+		border-color var(--transition-speed) ease;
 }
 
 .submit-button:hover {
 	background: var(--blue-dark);
-	transform: translateY(-2px);
+	border-color: var(--blue-dark);
 }
 
 .submit-button:disabled {
@@ -1687,11 +1540,13 @@ nav li a:focus {
 
 .page-title {
 	font-family: var(--font-display);
-	font-size: clamp(2.2rem, 5vw, 3.2rem);
-	font-weight: 300;
+	font-size: clamp(1.9rem, 4vw, 2.8rem);
+	font-weight: 400;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
 	color: var(--white);
-	margin: 0 0 12px 0;
-	line-height: 1.1;
+	margin: 0 0 14px 0;
+	line-height: 1.2;
 }
 
 .page-title em {
@@ -1765,11 +1620,13 @@ nav li a:focus {
 
 .partnerships-title {
 	font-family: var(--font-display);
-	font-size: clamp(2.75rem, 6vw, 4.75rem);
-	font-weight: 300;
+	font-size: clamp(2.2rem, 5vw, 4rem);
+	font-weight: 400;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
 	color: var(--navy);
 	margin: 0;
-	line-height: 1.05;
+	line-height: 1.1;
 }
 
 .partnerships-role {
@@ -1797,25 +1654,25 @@ nav li a:focus {
 .partnerships-btn {
 	display: inline-block;
 	padding: 14px 36px;
-	background: var(--blue);
-	color: var(--white);
-	border: none;
+	margin-top: 8px;
+	background: var(--navy);
+	color: var(--ivory);
+	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
-	letter-spacing: 0.18em;
+	letter-spacing: 0.26em;
 	text-transform: uppercase;
-	font-weight: 500;
+	font-weight: 400;
 	cursor: pointer;
 	text-decoration: none;
-	margin-top: 8px;
 	transition: background var(--transition-speed) ease,
-		transform var(--transition-speed) ease;
+		border-color var(--transition-speed) ease;
 }
 
 .partnerships-btn:hover {
 	background: var(--blue-dark);
-	color: var(--white);
-	transform: translateY(-2px);
+	border-color: var(--blue-dark);
+	color: var(--ivory);
 }
 
 .partnerships-btn:focus {

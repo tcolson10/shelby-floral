@@ -16,7 +16,7 @@ const mediaKitData = {
 		role: "Creator & Utah wedding florist",
 		image: "/images/portfolio/IMG_8989.JPG",
 		handles: [
-			{ label: "@shelby_floral", href: "https://www.instagram.com/shelby_floral/" },
+			{ label: "@shelbyfloral", href: "https://www.instagram.com/shelbyfloral/" },
 			{ label: "shelbyfloral.com", href: "/" },
 			{ label: "Utah", href: null },
 		],

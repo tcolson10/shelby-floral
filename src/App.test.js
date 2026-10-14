@@ -42,9 +42,9 @@ test('every gallery photo has a description', () => {
 
 test('contact form requires name, email and date', () => {
   renderAt('/');
-  expect(screen.getByLabelText(/Names/)).toBeRequired();
-  expect(screen.getByLabelText(/Email/)).toBeRequired();
-  expect(screen.getByLabelText(/Event Date/)).toBeRequired();
+  expect(screen.getByLabelText(/^Names \*/)).toBeRequired();
+  expect(screen.getByLabelText(/^Email \*/)).toBeRequired();
+  expect(screen.getByLabelText(/^Event Date \*/)).toBeRequired();
 });
 
 test('FAQ answers open and close', () => {
