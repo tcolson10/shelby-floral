@@ -11,7 +11,7 @@ export const bio = {
 export const processSteps = [
 	{
 		title: "Inquire",
-		body: "Tell us about your day using the form below. We'll be in touch within 24 hours.",
+		body: "Tell us about your day using the form below. We'll be in touch within 48 hours.",
 	},
 	{
 		title: "Design",

@@ -1,21 +1,22 @@
 /* ======== CSS VARIABLES ======== */
 :root {
+	/* Palette taken from the hydrangeas in the hero photo; whites and creams kept. */
 	--cream: #faf8f5;
 	--ivory: #f0ebe0;
-	--sage: #7a8c72;
-	--sage-dark: #5e6a54;
-	--sage-light: #a8b89e;
-	--warm-charcoal: #222c22;
-	--warm-gray: #5e6b5a;
-	--muted: #94a090;
-	--border: #dce3d9;
+	--blue: #41658f;
+	--blue-dark: #2f4f78;
+	--blue-light: #a9c1dc;
+	--navy: #1c2b3e;
+	--slate: #56677c;
+	--muted: #8b98a8;
+	--border: #d9e2ec;
 	--white: #ffffff;
 
 	/* Legacy aliases so nothing breaks */
-	--primary-color: var(--sage);
-	--primary-dark: var(--sage-dark);
-	--primary-color-alpha: rgba(122, 140, 114, 0.25);
-	--text-color: var(--warm-charcoal);
+	--primary-color: var(--blue);
+	--primary-dark: var(--blue-dark);
+	--primary-color-alpha: rgba(65, 101, 143, 0.25);
+	--text-color: var(--navy);
 	--light-gray: var(--cream);
 	--portfolio-bg: var(--ivory);
 	--border-color: var(--border);
@@ -80,14 +81,14 @@ h1, h2, h3, h4 {
 
 /* ======== LINKS & FOCUS ======== */
 a {
-	color: var(--sage);
+	color: var(--blue);
 	text-decoration: none;
 	transition: color var(--transition-speed) ease;
 }
 
 a:hover,
 a:focus {
-	color: var(--sage-dark);
+	color: var(--blue-dark);
 }
 
 a:focus,
@@ -95,7 +96,7 @@ button:focus,
 input:focus,
 textarea:focus,
 select:focus {
-	outline: 2px solid var(--sage);
+	outline: 2px solid var(--blue);
 	outline-offset: 2px;
 }
 
@@ -154,7 +155,7 @@ header.nav-scrolled {
 	font-style: italic;
 	font-weight: 300;
 	letter-spacing: 0.06em;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	margin-left: 24px;
 	line-height: 1;
 	display: block;
@@ -210,7 +211,7 @@ header.nav-transparent .navMonogram {
 .hamburger-line {
 	width: 30px;
 	height: 2px;
-	background-color: var(--warm-charcoal);
+	background-color: var(--navy);
 	transition: transform var(--transition-speed) ease,
 		opacity var(--transition-speed) ease,
 		background-color var(--transition-speed) ease;
@@ -253,7 +254,7 @@ nav li {
 
 nav li a {
 	text-decoration: none;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	transition: color var(--transition-speed) ease;
 	display: inline-block;
 	padding: 5px 0;
@@ -277,7 +278,7 @@ nav li a::after {
 
 nav li a:hover,
 nav li a:focus {
-	color: var(--sage);
+	color: var(--blue);
 	background-color: transparent;
 }
 
@@ -368,7 +369,7 @@ nav li a:focus {
 		font-family: var(--font-display);
 		font-weight: 400;
 		width: 100%;
-		color: var(--warm-charcoal);
+		color: var(--navy);
 		text-transform: none;
 	}
 
@@ -379,7 +380,7 @@ nav li a:focus {
 	nav li a:hover,
 	nav li a:focus {
 		background-color: transparent;
-		color: var(--sage);
+		color: var(--blue);
 	}
 }
 
@@ -389,7 +390,7 @@ nav li a:focus {
 	justify-content: center;
 	gap: 80px;
 	padding: 56px 10%;
-	background: var(--warm-charcoal);
+	background: var(--navy);
 	align-items: center;
 	flex-wrap: wrap;
 }
@@ -426,7 +427,7 @@ nav li a:focus {
 .footer-instagram a:hover,
 .footer-email a:focus,
 .footer-instagram a:focus {
-	color: var(--sage-light);
+	color: var(--blue-light);
 	transform: translateY(-2px);
 }
 
@@ -463,8 +464,15 @@ nav li a:focus {
 	overflow: hidden;
 }
 
+/* Parallax: the photo (and its dark overlay) is fixed to the screen while the
+   text and the rest of the page scroll over it. The hero's clip-path clips
+   fixed children, so the photo only shows inside the hero. */
+.hero {
+	clip-path: inset(0);
+}
+
 .hero-bg {
-	position: absolute;
+	position: fixed;
 	inset: 0;
 	width: 100%;
 	height: 100%;
@@ -474,7 +482,7 @@ nav li a:focus {
 }
 
 .hero-overlay {
-	position: absolute;
+	position: fixed;
 	inset: 0;
 	z-index: 1;
 	background: linear-gradient(
@@ -563,7 +571,7 @@ nav li a:focus {
 
 .hero-btn-primary {
 	background: var(--white);
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	border: none;
 	padding: 18px 50px;
 	font-family: var(--font-body);
@@ -661,7 +669,7 @@ nav li a:focus {
 .stats-bar {
 	display: flex;
 	justify-content: center;
-	background: var(--warm-charcoal);
+	background: var(--navy);
 	padding: 48px 5%;
 }
 
@@ -727,7 +735,7 @@ nav li a:focus {
 	font-size: 0.65rem;
 	letter-spacing: 0.28em;
 	text-transform: uppercase;
-	color: var(--sage);
+	color: var(--blue);
 	margin-bottom: 14px;
 	font-weight: 400;
 }
@@ -736,14 +744,14 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: clamp(2rem, 4vw, 3rem);
 	font-weight: 300;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	margin: 0 0 20px 0;
 	line-height: 1.1;
 }
 
 .section-heading em {
 	font-style: italic;
-	color: var(--sage);
+	color: var(--blue);
 }
 
 /* ======== ABOUT SECTION ======== */
@@ -774,7 +782,7 @@ nav li a:focus {
 }
 
 .about-text p {
-	color: var(--warm-gray);
+	color: var(--slate);
 	line-height: 1.85;
 	margin: 0 0 18px 0;
 	font-size: 1rem;
@@ -786,7 +794,7 @@ nav li a:focus {
 	align-self: flex-start;
 	margin-top: 12px;
 	padding: 14px 36px;
-	background: var(--sage);
+	background: var(--blue);
 	color: var(--white);
 	border: none;
 	font-family: var(--font-body);
@@ -800,12 +808,12 @@ nav li a:focus {
 }
 
 .about-cta:hover {
-	background: var(--sage-dark);
+	background: var(--blue-dark);
 	transform: translateY(-2px);
 }
 
 .about-cta:focus {
-	outline: 2px solid var(--sage);
+	outline: 2px solid var(--blue);
 	outline-offset: 3px;
 }
 
@@ -864,7 +872,7 @@ nav li a:focus {
 }
 
 .portfolio-header p {
-	color: var(--warm-gray);
+	color: var(--slate);
 	font-size: 1rem;
 	font-weight: 300;
 	letter-spacing: 0.04em;
@@ -920,8 +928,8 @@ nav li a:focus {
 	margin-top: 52px;
 	padding: 15px 48px;
 	background: transparent;
-	color: var(--sage);
-	border: 1px solid var(--sage);
+	color: var(--blue);
+	border: 1px solid var(--blue);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
 	letter-spacing: 0.18em;
@@ -935,7 +943,7 @@ nav li a:focus {
 }
 
 .portfolio-button:hover {
-	background: var(--sage);
+	background: var(--blue);
 	color: var(--white);
 	transform: translateY(-2px);
 }
@@ -1098,7 +1106,7 @@ nav li a:focus {
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	background: var(--warm-charcoal);
+	background: var(--navy);
 	color: var(--white);
 	padding: 90px 5% 70px;
 }
@@ -1108,7 +1116,7 @@ nav li a:focus {
 }
 
 .testimonials-eyebrow {
-	color: var(--sage-light);
+	color: var(--blue-light);
 }
 
 .testimonials-heading {
@@ -1116,7 +1124,7 @@ nav li a:focus {
 }
 
 .testimonials-heading em {
-	color: var(--sage-light);
+	color: var(--blue-light);
 }
 
 .testimonials-carousel {
@@ -1165,7 +1173,7 @@ nav li a:focus {
 	font-size: 0.68rem;
 	letter-spacing: 0.22em;
 	text-transform: uppercase;
-	color: var(--sage-light);
+	color: var(--blue-light);
 	margin: 0;
 	font-family: var(--font-body);
 	font-weight: 400;
@@ -1222,7 +1230,7 @@ nav li a:focus {
 }
 
 .carousel-dot--active {
-	background: var(--sage-light);
+	background: var(--blue-light);
 	transform: scale(1.4);
 }
 
@@ -1345,7 +1353,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-style: italic;
 	font-size: 2.6rem;
-	color: var(--sage);
+	color: var(--blue);
 	line-height: 1;
 	margin-bottom: 12px;
 }
@@ -1354,12 +1362,12 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: 1.6rem;
 	font-weight: 400;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	margin: 0 0 10px;
 }
 
 .process-step p {
-	color: var(--warm-gray);
+	color: var(--slate);
 	font-weight: 300;
 	line-height: 1.75;
 	margin: 0;
@@ -1409,7 +1417,7 @@ nav li a:focus {
 	position: relative;
 	font-family: var(--font-display);
 	font-size: 1.35rem;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 }
 
 .faq-question::after {
@@ -1421,7 +1429,7 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-weight: 300;
 	font-size: 1.4rem;
-	color: var(--sage);
+	color: var(--blue);
 	transition: transform 0.35s ease;
 }
 
@@ -1434,7 +1442,7 @@ nav li a:focus {
 }
 
 .faq-question:focus-visible {
-	outline: 2px solid var(--sage);
+	outline: 2px solid var(--blue);
 	outline-offset: 2px;
 }
 
@@ -1455,7 +1463,7 @@ nav li a:focus {
 
 .faq-answer p {
 	margin: 0 0 22px;
-	color: var(--warm-gray);
+	color: var(--slate);
 	font-weight: 300;
 	line-height: 1.8;
 }
@@ -1481,7 +1489,7 @@ nav li a:focus {
 }
 
 .contact-header p {
-	color: var(--warm-gray);
+	color: var(--slate);
 	font-size: 1rem;
 	font-weight: 300;
 	letter-spacing: 0.04em;
@@ -1514,7 +1522,7 @@ nav li a:focus {
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	font-weight: 500;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	font-family: var(--font-body);
 }
 
@@ -1531,7 +1539,7 @@ nav li a:focus {
 	font-size: 0.95rem;
 	font-family: var(--font-body);
 	font-weight: 300;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	transition: border-color var(--transition-speed) ease,
 		box-shadow var(--transition-speed) ease;
 	-webkit-appearance: none;
@@ -1546,13 +1554,13 @@ nav li a:focus {
 
 .contact-form input:hover,
 .contact-form textarea:hover {
-	border-color: var(--sage-light);
+	border-color: var(--blue-light);
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
 	outline: none;
-	border-color: var(--sage);
+	border-color: var(--blue);
 	box-shadow: 0 0 0 3px var(--primary-color-alpha);
 }
 
@@ -1566,7 +1574,7 @@ nav li a:focus {
 .submit-button {
 	display: inline-block;
 	padding: 16px 56px;
-	background: var(--sage);
+	background: var(--blue);
 	color: var(--white);
 	border: none;
 	font-family: var(--font-body);
@@ -1580,7 +1588,7 @@ nav li a:focus {
 }
 
 .submit-button:hover {
-	background: var(--sage-dark);
+	background: var(--blue-dark);
 	transform: translateY(-2px);
 }
 
@@ -1593,7 +1601,7 @@ nav li a:focus {
 .form-note {
 	margin: 0;
 	font-size: 0.8rem;
-	color: var(--warm-gray);
+	color: var(--slate);
 	font-weight: 300;
 }
 
@@ -1620,7 +1628,7 @@ nav li a:focus {
 }
 
 .submit-button:focus {
-	outline: 2px solid var(--sage);
+	outline: 2px solid var(--blue);
 	outline-offset: 3px;
 }
 
@@ -1654,7 +1662,7 @@ nav li a:focus {
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
-	color: var(--sage-light);
+	color: var(--blue-light);
 	font-weight: 400;
 	font-size: 0.82rem;
 	letter-spacing: 0.08em;
@@ -1678,15 +1686,15 @@ nav li a:focus {
 
 .page-title em {
 	font-style: italic;
-	color: var(--sage-light);
+	color: var(--blue-light);
 }
 
 .portfolio-header .page-title {
-	color: var(--warm-charcoal);
+	color: var(--navy);
 }
 
 .portfolio-header .page-title em {
-	color: var(--sage);
+	color: var(--blue);
 }
 
 /* ======== PARTNERSHIPS / MEDIA KIT ======== */
@@ -1749,7 +1757,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: clamp(2.75rem, 6vw, 4.75rem);
 	font-weight: 300;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	margin: 0;
 	line-height: 1.05;
 }
@@ -1759,7 +1767,7 @@ nav li a:focus {
 	font-style: italic;
 	font-size: 1.15rem;
 	font-weight: 400;
-	color: var(--sage-dark);
+	color: var(--blue-dark);
 	margin: 0;
 }
 
@@ -1767,7 +1775,7 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-size: 0.85rem;
 	letter-spacing: 0.02em;
-	color: var(--warm-gray);
+	color: var(--slate);
 	margin: 0;
 }
 
@@ -1779,7 +1787,7 @@ nav li a:focus {
 .partnerships-btn {
 	display: inline-block;
 	padding: 14px 36px;
-	background: var(--sage);
+	background: var(--blue);
 	color: var(--white);
 	border: none;
 	font-family: var(--font-body);
@@ -1795,13 +1803,13 @@ nav li a:focus {
 }
 
 .partnerships-btn:hover {
-	background: var(--sage-dark);
+	background: var(--blue-dark);
 	color: var(--white);
 	transform: translateY(-2px);
 }
 
 .partnerships-btn:focus {
-	outline: 2px solid var(--sage);
+	outline: 2px solid var(--blue);
 	outline-offset: 3px;
 }
 
@@ -1809,7 +1817,7 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-size: 1.05rem;
 	line-height: 1.85;
-	color: var(--warm-gray);
+	color: var(--slate);
 	font-weight: 300;
 	margin: 0;
 	max-width: 680px;
@@ -1831,7 +1839,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: 1.6rem;
 	font-weight: 400;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	margin: 0 0 8px 0;
 }
 
@@ -1839,13 +1847,13 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-size: 0.95rem;
 	line-height: 1.7;
-	color: var(--warm-gray);
+	color: var(--slate);
 	margin: 0;
 	font-weight: 300;
 }
 
 .partnerships-why {
-	border-left: 3px solid var(--sage);
+	border-left: 3px solid var(--blue);
 	padding: 4px 0 4px 28px;
 }
 
@@ -1853,7 +1861,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: clamp(1.4rem, 3vw, 1.85rem);
 	font-weight: 400;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	margin: 0 0 12px 0;
 	line-height: 1.3;
 }
@@ -1862,7 +1870,7 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-size: 0.98rem;
 	line-height: 1.85;
-	color: var(--warm-gray);
+	color: var(--slate);
 	font-weight: 300;
 	margin: 0;
 }
@@ -1886,7 +1894,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: 1.3rem;
 	font-weight: 400;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	margin: 0 0 20px 0;
 }
 
@@ -1905,7 +1913,7 @@ nav li a:focus {
 	font-family: var(--font-body);
 	font-size: 0.95rem;
 	line-height: 1.6;
-	color: var(--warm-gray);
+	color: var(--slate);
 	font-weight: 300;
 }
 
@@ -1916,7 +1924,7 @@ nav li a:focus {
 	top: 0.7em;
 	width: 10px;
 	height: 1px;
-	background: var(--sage);
+	background: var(--blue);
 }
 
 .partnerships-tags {
@@ -1929,7 +1937,7 @@ nav li a:focus {
 	display: inline-block;
 	padding: 9px 16px;
 	border: 1px solid var(--border);
-	color: var(--warm-gray);
+	color: var(--slate);
 	font-family: var(--font-body);
 	font-size: 0.68rem;
 	letter-spacing: 0.1em;
@@ -1951,7 +1959,7 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: clamp(1.9rem, 4vw, 2.75rem);
 	font-weight: 300;
-	color: var(--warm-charcoal);
+	color: var(--navy);
 	margin: 0;
 }
 
@@ -1962,7 +1970,7 @@ nav li a:focus {
 .partnerships-closer-website {
 	font-family: var(--font-body);
 	font-size: 0.85rem;
-	color: var(--warm-gray);
+	color: var(--slate);
 	letter-spacing: 0.02em;
 }
 
@@ -2145,7 +2153,7 @@ nav li a:focus {
 	.stats-bar.partnerships-stats {
 		padding: 7pt 0;
 		margin: 7pt 0;
-		background: var(--warm-charcoal) !important;
+		background: var(--navy) !important;
 	}
 
 	.partnerships-stats .stat-number {
@@ -2172,7 +2180,7 @@ nav li a:focus {
 	}
 
 	.partnerships-why {
-		border-left-color: var(--sage) !important;
+		border-left-color: var(--blue) !important;
 		padding: 1pt 0 1pt 14pt;
 	}
 
@@ -2211,7 +2219,7 @@ nav li a:focus {
 	}
 
 	.partnerships-btn.partnerships-closer-email {
-		background: var(--sage) !important;
+		background: var(--blue) !important;
 		color: var(--white) !important;
 		padding: 6pt 18pt;
 		font-size: 8.5pt;

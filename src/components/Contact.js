@@ -30,7 +30,7 @@ function Contact() {
 					<h2 className="section-heading">
 						Thank you, <em>talk soon!</em>
 					</h2>
-					<p>We'll be in touch within 24 hours to start planning your florals.</p>
+					<p>We'll be in touch within 48 hours to start planning your florals.</p>
 				</div>
 			</div>
 		);
@@ -43,7 +43,7 @@ function Contact() {
 				<h2 className="section-heading">
 					Start your <em>floral story</em>
 				</h2>
-				<p>Fill out the form below and we'll be in touch within 24 hours</p>
+				<p>Fill out the form below and we'll be in touch within 48 hours</p>
 			</div>
 			<form className="contact-form" onSubmit={handleSubmit}>
 				<p className="form-note">
