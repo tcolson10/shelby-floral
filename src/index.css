@@ -367,12 +367,17 @@ nav li a:focus {
 
 .footer-icons {
 	display: flex;
-	gap: 36px;
-	margin-top: 32px;
+	gap: 12px;
+	margin-top: 24px;
 }
 
+/* 48px tap targets around the 22px icons. */
 .footer-icons a {
 	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
 	color: rgba(255, 255, 255, 0.75);
 	transition: color var(--transition-speed) ease;
 }
@@ -387,8 +392,22 @@ nav li a:focus {
 	height: 22px;
 }
 
+.footer-copied {
+	min-height: 1.2em;
+	margin: 12px 0 0;
+	font-size: 0.75rem;
+	letter-spacing: 0.08em;
+	color: var(--blue-light);
+	opacity: 0;
+	transition: opacity var(--transition-speed) ease;
+}
+
+.footer-copied.is-shown {
+	opacity: 1;
+}
+
 .footer-meta {
-	margin: 56px 0 0;
+	margin: 32px 0 0;
 	font-size: 0.68rem;
 	letter-spacing: 0.24em;
 	text-transform: uppercase;
@@ -501,13 +520,13 @@ nav li a:focus {
 	margin-top: 44px;
 }
 
-/* Hydrangea-blue buttons in the same spaced capitals as the tagline; they
-   deepen on hover (or tap, on phones). */
+/* Navy buttons like the rest of the site, in the tagline's spaced capitals;
+   they turn hydrangea blue on hover (or tap, on phones). */
 .hero-btn {
 	padding: 13px 30px;
-	background: var(--blue);
+	background: var(--navy);
 	color: var(--ivory);
-	border: 1px solid var(--blue);
+	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.68rem;
 	font-weight: 400;
