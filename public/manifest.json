@@ -3,13 +3,18 @@
   "name": "Shelby Floral Company",
   "icons": [
     {
-      "src": "images/portfolio/logo-new.png",
+      "src": "images/sf-icon-192.png",
       "type": "image/png",
-      "sizes": "441x441"
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/sf-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#41658f",
+  "theme_color": "#46658a",
   "background_color": "#faf8f5"
 }

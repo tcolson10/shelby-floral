@@ -6,7 +6,8 @@
 	--blue: #41658f;
 	--blue-dark: #2f4f78;
 	--blue-light: #a9c1dc;
-	--navy: #1c2b3e;
+	--navy: #233a55; /* deep blue for text and solid buttons */
+	--french: #46658a; /* dusty French blue for the dark sections */
 	--slate: #56677c;
 	--muted: #8b98a8;
 	--border: #d9e2ec;
@@ -42,7 +43,7 @@ body {
 	font-family: var(--font-body);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	font-weight: 300;
+	font-weight: 400;
 	min-width: 320px;
 	max-width: 100vw;
 	overflow-x: hidden;
@@ -354,7 +355,7 @@ nav li a:focus {
 	align-items: center;
 	text-align: center;
 	padding: 80px 24px 40px;
-	background: var(--navy);
+	background: var(--french);
 	color: var(--ivory);
 }
 
@@ -394,7 +395,7 @@ nav li a:focus {
 	justify-content: center;
 	width: 48px;
 	height: 48px;
-	color: rgba(255, 255, 255, 0.75);
+	color: rgba(255, 255, 255, 0.9);
 	transition: color var(--transition-speed) ease;
 }
 
@@ -427,7 +428,7 @@ nav li a:focus {
 	margin: 12px 0 0;
 	font-size: 0.75rem;
 	letter-spacing: 0.08em;
-	color: var(--blue-light);
+	color: var(--white);
 	opacity: 0;
 	transition: opacity var(--transition-speed) ease;
 }
@@ -438,10 +439,11 @@ nav li a:focus {
 
 .footer-meta {
 	margin: 32px 0 0;
-	font-size: 0.68rem;
+	font-size: 0.74rem;
 	letter-spacing: 0.24em;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.4);
+	color: rgba(255, 255, 255, 0.85);
+	font-weight: 500;
 }
 
 /* ======== HERO ======== */
@@ -627,7 +629,7 @@ nav li a:focus {
 .stats-bar {
 	display: flex;
 	justify-content: center;
-	background: var(--navy);
+	background: var(--french);
 	padding: 48px 5%;
 }
 
@@ -660,12 +662,12 @@ nav li a:focus {
 }
 
 .stat-label {
-	font-size: 0.6rem;
+	font-size: 0.68rem;
 	letter-spacing: 0.22em;
 	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.4);
+	color: rgba(255, 255, 255, 0.85);
 	margin-top: 8px;
-	font-weight: 400;
+	font-weight: 500;
 	font-family: var(--font-body);
 }
 
@@ -690,12 +692,12 @@ nav li a:focus {
 .section-eyebrow {
 	display: block;
 	font-family: var(--font-body);
-	font-size: 0.72rem;
+	font-size: 0.78rem;
 	letter-spacing: 0.32em;
 	text-transform: uppercase;
 	color: var(--blue);
 	margin-bottom: 18px;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 .section-heading {
@@ -753,7 +755,7 @@ nav li a:focus {
 	line-height: 1.85;
 	margin: 0 0 18px 0;
 	font-size: 1rem;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .about-cta {
@@ -768,7 +770,7 @@ nav li a:focus {
 	font-size: 0.72rem;
 	letter-spacing: 0.26em;
 	text-transform: uppercase;
-	font-weight: 400;
+	font-weight: 500;
 	cursor: pointer;
 	text-decoration: none;
 	transition: background var(--transition-speed) ease,
@@ -844,7 +846,7 @@ nav li a:focus {
 .portfolio-header p {
 	color: var(--slate);
 	font-size: 1rem;
-	font-weight: 300;
+	font-weight: 400;
 	letter-spacing: 0.04em;
 	margin: 0;
 }
@@ -904,7 +906,7 @@ nav li a:focus {
 	font-size: 0.72rem;
 	letter-spacing: 0.26em;
 	text-transform: uppercase;
-	font-weight: 400;
+	font-weight: 500;
 	cursor: pointer;
 	text-decoration: none;
 	transition: background var(--transition-speed) ease,
@@ -1076,7 +1078,7 @@ nav li a:focus {
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	background: var(--navy);
+	background: var(--french);
 	color: var(--white);
 	padding: 90px 5% 70px;
 }
@@ -1086,7 +1088,7 @@ nav li a:focus {
 }
 
 .testimonials-eyebrow {
-	color: var(--blue-light);
+	color: rgba(255, 255, 255, 0.9);
 }
 
 .testimonials-heading {
@@ -1135,24 +1137,24 @@ nav li a:focus {
 	line-height: 1.75;
 	margin: 0 0 16px 0;
 	font-style: italic;
-	font-weight: 300;
-	color: rgba(255, 255, 255, 0.9);
+	font-weight: 400;
+	color: var(--white);
 }
 
 .client-name {
-	font-size: 0.68rem;
+	font-size: 0.76rem;
 	letter-spacing: 0.22em;
 	text-transform: uppercase;
-	color: var(--blue-light);
+	color: rgba(255, 255, 255, 0.9);
 	margin: 0;
 	font-family: var(--font-body);
-	font-weight: 400;
+	font-weight: 500;
 }
 
 .carousel-btn {
 	background: transparent;
-	border: 1px solid rgba(255, 255, 255, 0.25);
-	color: rgba(255, 255, 255, 0.7);
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	color: rgba(255, 255, 255, 0.85);
 	width: 44px;
 	height: 44px;
 	border-radius: 50%;
@@ -1193,7 +1195,7 @@ nav li a:focus {
 	height: 6px;
 	border-radius: 50%;
 	border: none;
-	background: rgba(255, 255, 255, 0.25);
+	background: rgba(255, 255, 255, 0.4);
 	cursor: pointer;
 	padding: 0;
 	transition: background var(--transition-speed) ease,
@@ -1201,7 +1203,7 @@ nav li a:focus {
 }
 
 .carousel-dot--active {
-	background: var(--blue-light);
+	background: var(--white);
 	transform: scale(1.4);
 }
 
@@ -1210,12 +1212,12 @@ nav li a:focus {
 	padding: 17px 60px;
 	background: transparent;
 	color: var(--ivory);
-	border: 1px solid rgba(255, 255, 255, 0.4);
+	border: 1px solid rgba(255, 255, 255, 0.7);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
 	letter-spacing: 0.26em;
 	text-transform: uppercase;
-	font-weight: 400;
+	font-weight: 500;
 	cursor: pointer;
 	text-decoration: none;
 	-webkit-tap-highlight-color: transparent;
@@ -1293,8 +1295,8 @@ nav li a:focus {
 	font-family: var(--font-display);
 	font-size: 1.2rem;
 	font-style: italic;
-	font-weight: 300;
-	color: rgba(255, 255, 255, 0.88);
+	font-weight: 400;
+	color: var(--white);
 	margin: 0 0 16px 0;
 	line-height: 1.75;
 }
@@ -1353,7 +1355,7 @@ nav li a:focus {
 
 .process-step p {
 	color: var(--slate);
-	font-weight: 300;
+	font-weight: 400;
 	line-height: 1.75;
 	margin: 0;
 }
@@ -1449,7 +1451,7 @@ nav li a:focus {
 .faq-answer p {
 	margin: 0 0 22px;
 	color: var(--slate);
-	font-weight: 300;
+	font-weight: 400;
 	line-height: 1.8;
 }
 
@@ -1476,7 +1478,7 @@ nav li a:focus {
 .contact-header p {
 	color: var(--slate);
 	font-size: 1rem;
-	font-weight: 300;
+	font-weight: 400;
 	letter-spacing: 0.04em;
 	margin: 0;
 }
@@ -1523,7 +1525,7 @@ nav li a:focus {
 	border-radius: 0;
 	font-size: 0.95rem;
 	font-family: var(--font-body);
-	font-weight: 300;
+	font-weight: 400;
 	color: var(--navy);
 	transition: border-color var(--transition-speed) ease,
 		box-shadow var(--transition-speed) ease;
@@ -1534,7 +1536,7 @@ nav li a:focus {
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
 	color: var(--muted);
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .contact-form input:hover,
@@ -1566,7 +1568,7 @@ nav li a:focus {
 	font-size: 0.72rem;
 	letter-spacing: 0.26em;
 	text-transform: uppercase;
-	font-weight: 400;
+	font-weight: 500;
 	cursor: pointer;
 	text-decoration: none;
 	transition: background var(--transition-speed) ease,
@@ -1587,9 +1589,9 @@ nav li a:focus {
 
 .form-note {
 	margin: 0;
-	font-size: 0.8rem;
+	font-size: 0.85rem;
 	color: var(--slate);
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .form-honeypot {
@@ -1649,7 +1651,7 @@ nav li a:focus {
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
-	color: var(--blue-light);
+	color: rgba(255, 255, 255, 0.9);
 	font-weight: 400;
 	font-size: 0.82rem;
 	letter-spacing: 0.08em;
@@ -1786,7 +1788,7 @@ nav li a:focus {
 	font-size: 0.72rem;
 	letter-spacing: 0.26em;
 	text-transform: uppercase;
-	font-weight: 400;
+	font-weight: 500;
 	cursor: pointer;
 	text-decoration: none;
 	transition: background var(--transition-speed) ease,
@@ -1810,7 +1812,7 @@ nav li a:focus {
 	font-size: 1.05rem;
 	line-height: 1.85;
 	color: var(--slate);
-	font-weight: 300;
+	font-weight: 400;
 	margin: 0;
 	max-width: 680px;
 }
@@ -1841,7 +1843,7 @@ nav li a:focus {
 	line-height: 1.7;
 	color: var(--slate);
 	margin: 0;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .partnerships-why {
@@ -1863,7 +1865,7 @@ nav li a:focus {
 	font-size: 0.98rem;
 	line-height: 1.85;
 	color: var(--slate);
-	font-weight: 300;
+	font-weight: 400;
 	margin: 0;
 }
 
@@ -1906,7 +1908,7 @@ nav li a:focus {
 	font-size: 0.95rem;
 	line-height: 1.6;
 	color: var(--slate);
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .partnerships-list li::before {
@@ -1931,10 +1933,10 @@ nav li a:focus {
 	border: 1px solid var(--border);
 	color: var(--slate);
 	font-family: var(--font-body);
-	font-size: 0.68rem;
+	font-size: 0.72rem;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
-	font-weight: 400;
+	font-weight: 500;
 }
 
 .partnerships-closer {
@@ -2155,7 +2157,7 @@ nav li a:focus {
 	.stats-bar.partnerships-stats {
 		padding: 7pt 0;
 		margin: 7pt 0;
-		background: var(--navy) !important;
+		background: var(--french) !important;
 	}
 
 	.partnerships-stats .stat-number {
