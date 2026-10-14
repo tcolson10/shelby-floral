@@ -53,6 +53,7 @@ const images = {
 	"IMG_7636.jpg": { w: 1067, h: 1600, alt: "Blush and white centerpiece beside a table number card" },
 	"IMG_7637.jpg": { w: 1067, h: 1600, alt: "Pink and white centerpiece with taper candles at a candlelit reception" },
 	"IMG_7638.jpg": { w: 1067, h: 1600, alt: "Blush rose florals along a stone fireplace mantel and sweetheart table" },
+	"hero-hydrangeas.jpg": { w: 2000, h: 2800, alt: "" },
 	"shelby-about.jpg": { w: 1067, h: 1600, alt: "Shelby trimming white roses among white vases on the studio floor" },
 	"IMG_8989.JPG": { w: 733, h: 1100, alt: "Shelby holding white flowers" },
 };

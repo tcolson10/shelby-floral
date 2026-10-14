@@ -365,14 +365,14 @@ nav li a:focus {
 	}
 }
 
-.social-icons {
+.footer-icons {
 	display: flex;
 	gap: 12px;
 	margin-top: 24px;
 }
 
 /* 48px tap targets around the 22px icons. */
-.social-icons a {
+.footer-icons a {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -382,31 +382,31 @@ nav li a:focus {
 	transition: color var(--transition-speed) ease;
 }
 
-.social-icons a:hover {
+.footer-icons a:hover {
 	color: var(--white);
 }
 
 /* No box when clicked or tapped; keyboard users still get a subtle ring. */
-.social-icons a {
+.footer-icons a {
 	-webkit-tap-highlight-color: transparent;
 }
 
-.social-icons a:focus {
+.footer-icons a:focus {
 	outline: none;
 }
 
-.social-icons a:focus-visible {
+.footer-icons a:focus-visible {
 	outline: 1px solid rgba(255, 255, 255, 0.5);
 	outline-offset: 2px;
 	color: var(--white);
 }
 
-.social-icons svg {
+.footer-icons svg {
 	width: 22px;
 	height: 22px;
 }
 
-.social-copied {
+.footer-copied {
 	min-height: 1.2em;
 	margin: 12px 0 0;
 	font-size: 0.75rem;
@@ -416,7 +416,7 @@ nav li a:focus {
 	transition: opacity var(--transition-speed) ease;
 }
 
-.social-copied.is-shown {
+.footer-copied.is-shown {
 	opacity: 1;
 }
 
@@ -438,30 +438,43 @@ nav li a:focus {
 	justify-content: center;
 	text-align: center;
 	overflow: hidden;
-	background: var(--navy);
 }
 
-/* Line-drawn bouquet logo, used as a mask so its color comes from CSS. */
-.hero-flower {
-	display: block;
-	width: 64px;
-	height: 110px;
-	margin-bottom: 36px;
-	background-color: var(--blue-light);
-	-webkit-mask: url("./images/flower-logo.png") center / contain no-repeat;
-	mask: url("./images/flower-logo.png") center / contain no-repeat;
+/* Parallax: the photo (and its dark overlay) is fixed to the screen while the
+   text and the rest of the page scroll over it. The hero's clip-path clips
+   fixed children, so the photo only shows inside the hero. */
+.hero {
+	clip-path: inset(0);
 }
 
-/* Socials pinned to the bottom of the hero. */
-.hero-social {
-	position: absolute;
-	bottom: 32px;
+/* Sized to the large viewport (lvh: screen height with the phone's address
+   bar hidden) so the fixed photo doesn't re-zoom when the bar collapses. */
+.hero-bg {
+	position: fixed;
+	top: 0;
 	left: 0;
-	right: 0;
-	z-index: 2;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	width: 100%;
+	height: 100vh;
+	height: 100lvh;
+	object-fit: cover;
+	object-position: center 44%;
+	z-index: 0;
+}
+
+.hero-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	height: 100lvh;
+	z-index: 0;
+	background: linear-gradient(
+		to bottom,
+		rgba(16, 26, 40, 0.32) 0%,
+		rgba(16, 26, 40, 0.42) 55%,
+		rgba(16, 26, 40, 0.58) 100%
+	);
 }
 
 .hero-content {
@@ -563,6 +576,14 @@ nav li a:focus {
 		min-height: 100svh;
 	}
 
+	/* Trim the top of the photo on phones: make it 18% taller than the
+	   screen and shift it up so the extra is cut off above. */
+	.hero-bg {
+		top: -18vh;
+		top: -18lvh;
+		height: 118vh;
+		height: 118lvh;
+	}
 }
 
 /* On phones the name stays on one line, sized to the screen width. */
