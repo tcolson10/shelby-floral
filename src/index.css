@@ -382,8 +382,22 @@ nav li a:focus {
 	transition: color var(--transition-speed) ease;
 }
 
-.footer-icons a:hover,
+.footer-icons a:hover {
+	color: var(--white);
+}
+
+/* No box when clicked or tapped; keyboard users still get a subtle ring. */
+.footer-icons a {
+	-webkit-tap-highlight-color: transparent;
+}
+
 .footer-icons a:focus {
+	outline: none;
+}
+
+.footer-icons a:focus-visible {
+	outline: 1px solid rgba(255, 255, 255, 0.5);
+	outline-offset: 2px;
 	color: var(--white);
 }
 
