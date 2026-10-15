@@ -24,7 +24,7 @@ function Testimonials() {
 	const next = () => setCurrent((c) => (c + 1) % testimonialsData.length);
 
 	return (
-		<div className="testimonials-container">
+		<div className="testimonials-container testimonials-home">
 			<div className="testimonials-header reveal">
 				<span className="section-eyebrow testimonials-eyebrow">Kind Words</span>
 				<h2 className="section-heading testimonials-heading">
@@ -41,17 +41,20 @@ function Testimonials() {
 				<button className="carousel-btn" onClick={prev} aria-label="Previous testimonial">
 					&#8249;
 				</button>
-				<div className="carousel-track" aria-live={paused ? "polite" : "off"}>
-					{testimonialsData.map((t, i) => (
-						<div
-							key={t.name}
-							className={`carousel-slide${i === current ? " carousel-slide--active" : ""}`}
-							aria-hidden={i !== current}
-						>
-							<blockquote>&#8220;{t.text}&#8221;</blockquote>
-							<p className="client-name">{t.name}</p>
-						</div>
-					))}
+				<div className="testimonial-card">
+					<span className="review-mark" aria-hidden="true">&#8220;</span>
+					<div className="carousel-track" aria-live={paused ? "polite" : "off"}>
+						{testimonialsData.map((t, i) => (
+							<div
+								key={t.name}
+								className={`carousel-slide${i === current ? " carousel-slide--active" : ""}`}
+								aria-hidden={i !== current}
+							>
+								<blockquote>{t.text}</blockquote>
+								<p className="client-name">{t.name}</p>
+							</div>
+						))}
+					</div>
 				</div>
 				<button className="carousel-btn" onClick={next} aria-label="Next testimonial">
 					&#8250;

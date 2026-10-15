@@ -1191,7 +1191,7 @@ nav li a:focus {
 	height: 6px;
 	border-radius: 50%;
 	border: none;
-	background: rgba(255, 255, 255, 0.4);
+	background-color: rgba(255, 255, 255, 0.4);
 	cursor: pointer;
 	padding: 0;
 	transition: background var(--transition-speed) ease,
@@ -1199,7 +1199,7 @@ nav li a:focus {
 }
 
 .carousel-dot--active {
-	background: var(--white);
+	background-color: var(--white);
 	transform: scale(1.4);
 }
 
@@ -2138,11 +2138,11 @@ nav li a:focus {
 }
 
 .carousel-dot {
-	background: rgba(255, 255, 255, 0.35);
+	background-color: rgba(255, 255, 255, 0.35);
 }
 
 .carousel-dot--active {
-	background: var(--white);
+	background-color: var(--white);
 }
 
 /* Buttons on the green: white outline, fill white with green text on hover. */
@@ -2178,6 +2178,249 @@ nav li a:focus {
 .footer-icons a:hover,
 .footer-icons a:focus-visible {
 	color: rgba(255, 255, 255, 0.75);
+}
+
+/* ======== FULL TESTIMONIALS: editorial wall of kind words ======== */
+/* Cream page, white cards in staggered columns; green only as an accent. */
+.testimonials-container.full-page {
+	background: var(--cream);
+	color: var(--navy);
+	padding-bottom: 110px;
+}
+
+.testimonials-container.full-page .page-title {
+	color: var(--blue);
+}
+
+.testimonials-container.full-page .section-eyebrow {
+	color: var(--navy);
+}
+
+.testimonials-container.full-page .testimonials-header p {
+	color: var(--slate);
+	font-style: italic;
+	font-family: var(--font-display);
+	font-size: 1.2rem;
+}
+
+.testimonials-container.full-page .back-link {
+	color: var(--navy);
+}
+
+.testimonials-container.full-page .back-link:hover {
+	color: var(--blue);
+}
+
+.review-wall {
+	columns: 2;
+	column-gap: 28px;
+	width: 100%;
+	max-width: 1080px;
+	margin: 12px auto 0;
+	padding: 0 24px;
+	box-sizing: border-box;
+}
+
+.review-card {
+	position: relative;
+	break-inside: avoid;
+	margin: 0 0 28px;
+	padding: 52px 44px 36px;
+	background: var(--white);
+	border: 1px solid var(--border);
+	text-align: left;
+	transition: transform var(--transition-speed) ease,
+		box-shadow var(--transition-speed) ease;
+}
+
+.review-card:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 18px 40px rgba(34, 34, 34, 0.06);
+}
+
+.review-mark {
+	position: absolute;
+	top: 6px;
+	left: 36px;
+	font-family: var(--font-display);
+	font-size: 5.5rem;
+	line-height: 1;
+	color: var(--blue-light);
+}
+
+.review-card blockquote {
+	position: relative;
+	margin: 0;
+	font-family: var(--font-display);
+	font-style: italic;
+	font-size: 1.22rem;
+	line-height: 1.7;
+	color: var(--navy);
+	font-weight: 500;
+}
+
+.review-card figcaption {
+	margin-top: 26px;
+	font-family: var(--font-body);
+	font-size: 0.74rem;
+	font-weight: 500;
+	letter-spacing: 0.24em;
+	text-transform: uppercase;
+	color: var(--blue);
+}
+
+.review-card figcaption::before {
+	content: "";
+	display: inline-block;
+	width: 28px;
+	height: 1px;
+	margin-right: 14px;
+	vertical-align: middle;
+	background: var(--blue);
+}
+
+@media (max-width: 768px) {
+	.review-wall {
+		columns: 1;
+		padding: 0 18px;
+	}
+
+	.review-card {
+		padding: 46px 26px 30px;
+	}
+
+	.review-mark {
+		left: 22px;
+	}
+
+	.review-card blockquote {
+		font-size: 1.12rem;
+	}
+}
+
+/* ======== HOME TESTIMONIALS: editorial card on cream ======== */
+/* Matches the full testimonials page: cream band, one white card, green accents. */
+.testimonials-container.testimonials-home {
+	background: var(--cream);
+	color: var(--navy);
+	border-top: 1px solid var(--border);
+	border-bottom: 1px solid var(--border);
+}
+
+.testimonials-home .testimonials-eyebrow {
+	color: var(--navy);
+}
+
+.testimonials-home .testimonials-heading {
+	color: var(--blue);
+}
+
+.testimonials-home .testimonials-carousel {
+	max-width: 960px;
+	gap: 28px;
+}
+
+.testimonial-card {
+	position: relative;
+	flex: 1;
+	min-width: 0;
+	padding: 64px 64px 44px;
+	background: var(--white);
+	border: 1px solid var(--border);
+}
+
+.testimonial-card .review-mark {
+	top: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 6rem;
+}
+
+.testimonials-home .carousel-slide blockquote {
+	color: var(--navy);
+	font-size: 1.45rem;
+	font-weight: 500;
+	line-height: 1.65;
+}
+
+.testimonials-home .client-name {
+	color: var(--blue);
+	margin-top: 8px;
+	font-size: 0.76rem;
+	font-weight: 500;
+	letter-spacing: 0.24em;
+}
+
+.testimonials-home .client-name::before {
+	content: "";
+	display: inline-block;
+	width: 28px;
+	height: 1px;
+	margin-right: 14px;
+	vertical-align: middle;
+	background: var(--blue);
+}
+
+/* Arrows: thin green circles that fill green on hover. */
+.testimonials-home .carousel-btn {
+	background: transparent;
+	border: 1px solid var(--blue);
+	color: var(--blue);
+	flex-shrink: 0;
+}
+
+.testimonials-home .carousel-btn:hover,
+.testimonials-home .carousel-btn:active {
+	background: var(--blue);
+	border-color: var(--blue);
+	color: var(--white);
+}
+
+/* background-color (not the shorthand) keeps the phones' padded tap area clipped. */
+.testimonials-home .carousel-dot {
+	background-color: var(--blue-light);
+}
+
+.testimonials-home .carousel-dot--active {
+	background-color: var(--blue);
+}
+
+/* See All: the site's standard filled green button. */
+.testimonials-home .testimonials-button {
+	background: var(--blue);
+	border-color: var(--blue);
+	color: var(--ivory);
+}
+
+.testimonials-home .testimonials-button:hover,
+.testimonials-home .testimonials-button:active {
+	background: #3c5242;
+	border-color: #3c5242;
+	color: var(--ivory);
+}
+
+@media (max-width: 768px) {
+	.testimonial-card {
+		padding: 56px 24px 32px;
+	}
+
+	.testimonials-home .carousel-slide blockquote {
+		font-size: 1.15rem;
+	}
+
+	.testimonials-home .testimonials-carousel {
+		gap: 6px;
+	}
+
+	.testimonials-home .carousel-btn {
+		width: 32px;
+		height: 32px;
+		font-size: 1rem;
+	}
+
+	.testimonial-card {
+		padding: 52px 18px 28px;
+	}
 }
 
 /* ======== PRINT ======== */

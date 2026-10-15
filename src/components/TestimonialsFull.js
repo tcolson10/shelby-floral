@@ -13,15 +13,17 @@ function TestimonialsFull() {
                 <Link to="/testimonials" className="back-link">← Back to Testimonials</Link>
             </div>
             <div className="testimonials-header">
+                <span className="section-eyebrow">Kind Words</span>
                 <h1 className='page-title'>Testimonials</h1>
-                <p>Kind words from clients turned friends</p>
+                <p>From clients turned friends</p>
             </div>
-            <div className="testimonials-list">
-                {testimonialsData.map((testimonial, index) => (
-                    <div key={index} className="testimonial-item">
-                        <blockquote>&#8220;{testimonial.text}&#8221;</blockquote>
-                        <p className="client-name">{testimonial.name}</p>
-                    </div>
+            <div className="review-wall">
+                {testimonialsData.map((testimonial) => (
+                    <figure key={testimonial.name} className="review-card">
+                        <span className="review-mark" aria-hidden="true">&#8220;</span>
+                        <blockquote>{testimonial.text}</blockquote>
+                        <figcaption>{testimonial.name}</figcaption>
+                    </figure>
                 ))}
             </div>
         </div>
