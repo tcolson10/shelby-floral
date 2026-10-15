@@ -590,13 +590,13 @@ nav li a:focus {
 		min-height: 100svh;
 	}
 
-	/* Trim the top of the photo on phones: make it 32% taller than the
-	   screen and shift it up so the extra sky is cut off above. */
+	/* Trim the top of the photo on phones: make it 18% taller than the
+	   screen and shift it up so the extra is cut off above. */
 	.hero-bg {
-		top: -32vh;
-		top: -32lvh;
-		height: 132vh;
-		height: 132lvh;
+		top: -18vh;
+		top: -18lvh;
+		height: 118vh;
+		height: 118lvh;
 	}
 }
 
