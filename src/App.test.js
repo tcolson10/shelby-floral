@@ -21,7 +21,7 @@ const renderAt = (path) =>
 
 test('homepage shows every section', () => {
   renderAt('/');
-  expect(screen.getByRole('heading', { name: /Selected Work/i })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /Featured Weddings/i })).toBeInTheDocument();
   expect(screen.getByText(/Meet the Florist/i)).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: /How It Works/i })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: /Let's Create Something Beautiful/i })).toBeInTheDocument();

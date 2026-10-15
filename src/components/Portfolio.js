@@ -7,7 +7,7 @@ function Portfolio() {
 		<section className="lx-section lx-portfolio">
 			<div className="lx-head reveal">
 				<span className="section-eyebrow">Portfolio</span>
-				<h2 className="section-heading">Selected Work</h2>
+				<h2 className="section-heading">Featured Weddings</h2>
 			</div>
 			<Gallery files={homeGallery} eagerCount={6} />
 			<div className="lx-after">

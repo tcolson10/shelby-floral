@@ -3,8 +3,8 @@
 export const bio = {
 	image: "shelby-about.jpg",
 	paragraphs: [
-		"I'm the hands and owner behind Shelby Floral, and I absolutely love everything about flowers! I got my start at the cutest little flower shop, where I trained as a designer and fell in love with floral design. I've been creating ever since! I take so much pride in my work and truly care about the quality and details of every piece I create.",
-		"One of my favorite parts of what I do is getting to know my couples and hearing all about their vision for their special day. I love bringing those ideas to life through flowers that feel personal and unique to you. Flowers add so much beauty to a wedding day, and I love knowing those details will live on in your photos for years to come!",
+		"I absolutely love everything flowers! I got my start at the cutest little flower shop, where I trained as a designer and fell in love with floral design. I've been creating ever since, taking pride in every little detail!",
+		"One of my favorite parts of what I do is getting to know my couples and bringing their wedding visions to life. I love creating flowers that feel personal to you and add beauty to your special day, becoming memories you'll cherish in photos for years to come!",
 	],
 };
 
