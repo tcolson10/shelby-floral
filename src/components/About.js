@@ -3,23 +3,22 @@ import { bio } from "../data/siteContent";
 
 function About({ onContact }) {
 	return (
-		<div className="about-section reveal">
-			<div className="about-image">
-				<Photo file={bio.image} sizes="(max-width: 900px) 100vw, 50vw" loading="lazy" />
+		<section className="lx-about">
+			<div className="lx-about-photo reveal">
+				<Photo file={bio.image} sizes="(max-width: 900px) 100vw, 42vw" loading="lazy" />
 			</div>
-			<div className="about-text">
+			<div className="lx-about-text reveal">
 				<span className="section-eyebrow">Meet the Florist</span>
-				<h2 className="section-heading">
-					Hi, I&apos;m <em>Shelby</em>
-				</h2>
+				<h2 className="section-heading">Shelby</h2>
+				<p className="lx-lede">The hands and heart behind Shelby Floral</p>
 				{bio.paragraphs.map((p) => (
-					<p key={p}>{p}</p>
+					<p key={p} className="lx-body">{p}</p>
 				))}
-				<button className="about-cta" onClick={onContact}>
+				<button type="button" className="lx-btn" onClick={onContact}>
 					Work With Me
 				</button>
 			</div>
-		</div>
+		</section>
 	);
 }
 

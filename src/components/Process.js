@@ -1,24 +1,24 @@
 import { processSteps } from "../data/siteContent";
 
+const NUMERALS = ["I", "II", "III", "IV", "V"];
+
 function Process() {
 	return (
-		<div className="process-container">
-			<div className="process-header reveal">
-				<span className="section-eyebrow">How It Works</span>
-				<h2 className="section-heading">
-					Simple from <em>start to finish</em>
-				</h2>
+		<section className="lx-section lx-process">
+			<div className="lx-head reveal">
+				<span className="section-eyebrow">The Experience</span>
+				<h2 className="section-heading">How It Works</h2>
 			</div>
-			<ol className="process-steps">
+			<ol className="lx-steps">
 				{processSteps.map((step, i) => (
-					<li key={step.title} className="process-step reveal">
-						<span className="process-number">{String(i + 1).padStart(2, "0")}</span>
-						<h3 className="process-title">{step.title}</h3>
-						<p>{step.body}</p>
+					<li key={step.title} className="lx-step reveal">
+						<span className="lx-numeral" aria-hidden="true">{NUMERALS[i]}</span>
+						<h3 className="lx-step-title">{step.title}</h3>
+						<p className="lx-body">{step.body}</p>
 					</li>
 				))}
 			</ol>
-		</div>
+		</section>
 	);
 }
 

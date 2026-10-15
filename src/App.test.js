@@ -21,10 +21,11 @@ const renderAt = (path) =>
 
 test('homepage shows every section', () => {
   renderAt('/');
-  expect(screen.getByText(/A glimpse of/i)).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /Selected Work/i })).toBeInTheDocument();
   expect(screen.getByText(/Meet the Florist/i)).toBeInTheDocument();
-  expect(screen.getByText(/How It Works/i)).toBeInTheDocument();
-  expect(screen.getByText(/Got Questions/i)).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /How It Works/i })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /Let's Create Something Beautiful/i })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /^Questions$/i })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: /Send Inquiry/i })).toBeInTheDocument();
 });
 

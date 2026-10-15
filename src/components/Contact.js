@@ -24,26 +24,29 @@ function Contact() {
 
 	if (status === "sent") {
 		return (
-			<div className="contact-container">
-				<div className="contact-header contact-thanks" role="status">
+			<section className="lx-section lx-contact lx-contact--thanks">
+				<div className="lx-contact-thanks" role="status">
 					<span className="section-eyebrow">Inquiry Received</span>
-					<h2 className="section-heading">
-						Thank you, <em>talk soon!</em>
-					</h2>
-					<p>We'll be in touch within 48 hours to start planning your florals.</p>
+					<h2 className="section-heading">Thank You</h2>
+					<p className="lx-lede">We&apos;ll be in touch within 48 hours to start planning your florals.</p>
 				</div>
-			</div>
+			</section>
 		);
 	}
 
 	return (
-		<div className="contact-container">
-			<div className="contact-header reveal">
-				<span className="section-eyebrow">Let's Connect</span>
-				<h2 className="section-heading">
-					Start your <em>floral story</em>
-				</h2>
-				<p>Fill out the form below and we'll be in touch within 48 hours</p>
+		<section className="lx-section lx-contact">
+			<div className="lx-contact-intro reveal">
+				<span className="section-eyebrow">Inquire</span>
+				<h2 className="section-heading">Start Your Floral Story</h2>
+				<p className="lx-lede">Tell us about your day.</p>
+				<p className="lx-body">
+					Share a few details and we&apos;ll be in touch within 48 hours to begin
+					designing your florals.
+				</p>
+				<a className="lx-contact-email" href="mailto:shelby@shelbyfloral.com">
+					shelby@shelbyfloral.com
+				</a>
 			</div>
 			<form className="contact-form" onSubmit={handleSubmit}>
 				<p className="form-note">
@@ -137,12 +140,12 @@ function Contact() {
 				)}
 
 				<div className="submit-button-container">
-					<button type="submit" className="submit-button" disabled={status === "sending"}>
+					<button type="submit" className="lx-btn submit-button" disabled={status === "sending"}>
 						{status === "sending" ? "Sending…" : "Send Inquiry"}
 					</button>
 				</div>
 			</form>
-		</div>
+		</section>
 	);
 }
 

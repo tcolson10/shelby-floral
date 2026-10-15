@@ -190,6 +190,14 @@ function App() {
 			</main>
 			<footer className="site-footer">
 				<p className="footer-name">Shelby Floral</p>
+				<p className="footer-tagline">Wedding &amp; Event Florals · Utah</p>
+				<nav className="footer-nav" aria-label="Footer">
+					{NAV_ITEMS.filter(([path]) => path !== "home").map(([path, label]) => (
+						<Link key={path} to={`/${path}`} onClick={() => handleNavigation(path)}>
+							{label}
+						</Link>
+					))}
+				</nav>
 				<div className="footer-icons">
 					<a
 						href="https://www.instagram.com/shelbyfloral/"

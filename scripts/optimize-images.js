@@ -18,7 +18,7 @@ fs.mkdirSync(outDir, { recursive: true });
 		for (const width of widthsFor(file)) {
 			const out = path.join(publicDir, webpPath(file, width));
 			if (fs.existsSync(out)) continue;
-			await sharp(src).rotate().resize({ width }).webp({ quality: 78 }).toFile(out);
+			await sharp(src).rotate().resize({ width }).webp({ quality: file.startsWith("hero-") || file.startsWith("band-") ? 80 : 78 }).toFile(out);
 			made++;
 		}
 	}

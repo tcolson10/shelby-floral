@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Photo from "./Photo";
 import { featured as testimonialsData } from "../data/testimonials";
 
 const ADVANCE_MS = 7000;
@@ -23,57 +24,49 @@ function Testimonials() {
 		setCurrent((c) => (c - 1 + testimonialsData.length) % testimonialsData.length);
 	const next = () => setCurrent((c) => (c + 1) % testimonialsData.length);
 
+	const pad = (n) => String(n).padStart(2, "0");
+
 	return (
-		<div className="testimonials-container testimonials-home">
-			<div className="testimonials-header reveal">
-				<span className="section-eyebrow testimonials-eyebrow">Kind Words</span>
-				<h2 className="section-heading testimonials-heading">
-					What our <em>clients say</em>
-				</h2>
-			</div>
-			<div
-				className="testimonials-carousel"
-				onMouseEnter={() => setPaused(true)}
-				onMouseLeave={() => setPaused(false)}
-				onFocus={() => setPaused(true)}
-				onBlur={() => setPaused(false)}
-			>
-				<button className="carousel-btn" onClick={prev} aria-label="Previous testimonial">
-					&#8249;
-				</button>
-				<div className="testimonial-card">
-					<span className="review-mark" aria-hidden="true">&#8220;</span>
-					<div className="carousel-track" aria-live={paused ? "polite" : "off"}>
-						{testimonialsData.map((t, i) => (
-							<div
-								key={t.name}
-								className={`carousel-slide${i === current ? " carousel-slide--active" : ""}`}
-								aria-hidden={i !== current}
-							>
-								<blockquote>{t.text}</blockquote>
-								<p className="client-name">{t.name}</p>
-							</div>
-						))}
-					</div>
+		<section
+			className="lx-band lx-testimonials"
+			aria-label="Client testimonials"
+			onMouseEnter={() => setPaused(true)}
+			onMouseLeave={() => setPaused(false)}
+			onFocus={() => setPaused(true)}
+			onBlur={() => setPaused(false)}
+		>
+			<Photo file="band-veil.jpg" sizes="(orientation: portrait) 170vw, 100vw" className="lx-band-photo" loading="lazy" />
+			<div className="lx-band-wash" />
+			<div className="lx-band-inner">
+				<span className="lx-band-label">Kind Words</span>
+				<div className="lx-quotes" aria-live={paused ? "polite" : "off"}>
+					{testimonialsData.map((t, i) => (
+						<figure
+							key={t.name}
+							className={`lx-quote${i === current ? " is-active" : ""}`}
+							aria-hidden={i !== current}
+						>
+							<blockquote>{t.text}</blockquote>
+							<figcaption>{t.name}</figcaption>
+						</figure>
+					))}
 				</div>
-				<button className="carousel-btn" onClick={next} aria-label="Next testimonial">
-					&#8250;
-				</button>
+				<div className="lx-quote-nav">
+					<button type="button" onClick={prev} aria-label="Previous testimonial">
+						&#8592;
+					</button>
+					<span className="lx-quote-count" aria-hidden="true">
+						{pad(current + 1)} <span>/</span> {pad(testimonialsData.length)}
+					</span>
+					<button type="button" onClick={next} aria-label="Next testimonial">
+						&#8594;
+					</button>
+				</div>
+				<Link to="/full-testimonials" className="lx-btn lx-btn--light">
+					Read All Reviews
+				</Link>
 			</div>
-			<div className="carousel-dots">
-				{testimonialsData.map((t, i) => (
-					<button
-						key={t.name}
-						className={`carousel-dot${i === current ? " carousel-dot--active" : ""}`}
-						onClick={() => setCurrent(i)}
-						aria-label={`Show review from ${t.name}`}
-					/>
-				))}
-			</div>
-			<Link to="/full-testimonials" className="testimonials-button">
-				See All Testimonials
-			</Link>
-		</div>
+		</section>
 	);
 }
 

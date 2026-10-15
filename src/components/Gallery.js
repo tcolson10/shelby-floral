@@ -32,7 +32,14 @@ function toColumns(files, count, orderedCount) {
 		column.items.push({ file, index });
 		column.height += h / w;
 	});
-	return columns.map((c) => c.items);
+	// Even out the bottom edge: every column is scaled to the average height,
+	// so each photo is cropped (or extended) by only a few percent instead of
+	// one column ending a whole photo short.
+	const target = columns.reduce((sum, c) => sum + c.height, 0) / count;
+	return columns.map((c) => {
+		const scale = c.height ? target / c.height : 1;
+		return c.items.map((item) => ({ ...item, scale }));
+	});
 }
 
 // Masonry photo grid that opens a full-screen viewer on click. Shared by the
@@ -46,10 +53,11 @@ function Gallery({ files, eagerCount = 6, orderedCount = files.length }) {
 			<div className="masonry-grid">
 				{toColumns(files, columnCount, orderedCount).map((column, c) => (
 					<div className="masonry-column" key={c}>
-						{column.map(({ file, index }) => (
+						{column.map(({ file, index, scale }) => (
 							<button
 								type="button"
 								className="masonry-item"
+								style={{ aspectRatio: `${images[file].w} / ${images[file].h * scale}` }}
 								key={file}
 								onClick={() => setLightboxIndex(index)}
 								aria-label="View larger photo"

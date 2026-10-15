@@ -63,7 +63,9 @@ const images = {
 	"IMG_7683.jpg": { w: 1067, h: 1600, alt: "Bride with bridesmaids in black gowns holding white bouquets with trailing green amaranthus" },
 	"IMG_7680.jpg": { w: 1067, h: 1600, alt: "Seating chart cards nestled in white and green hydrangeas" },
 	"IMG_9534.jpg": { w: 1143, h: 1600, alt: "Two-tier white cake surrounded by white roses, daisies and peach garden roses" },
-	"hero-bridesmaids.jpg": { w: 2000, h: 3000, alt: "" },
+	"band-veil.jpg": { w: 2400, h: 1635, alt: "" },
+	"band-hydrangea.jpg": { w: 2400, h: 3360, alt: "" },
+	"hero-bridesmaids.jpg": { w: 2400, h: 3600, alt: "" },
 	"shelby-about.jpg": { w: 1067, h: 1600, alt: "Shelby trimming white roses among white vases on the studio floor" },
 	"IMG_8989.JPG": { w: 733, h: 1100, alt: "Shelby holding white flowers" },
 };
@@ -139,8 +141,9 @@ const fullGallery = [
 ];
 
 // Widths of the WebP copies generated for each photo. A copy is only made
-// when it is smaller than the original.
-const SIZES = [600, 1100, 1500];
+// when it is smaller than the original. The full-screen hero and photo bands
+// are stored at 2400px, which stays sharp on Retina laptops without being heavy.
+const SIZES = [600, 1100, 1500, 2000];
 
 // "IMG_6645.JPG" -> "img-6645"
 const slug = (file) =>

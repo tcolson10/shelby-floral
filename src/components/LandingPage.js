@@ -5,6 +5,7 @@ import Process from "./Process";
 import Testimonials from "./Testimonials";
 import Faq from "./Faq";
 import Contact from "./Contact";
+import CtaBand from "./CtaBand";
 
 const LandingPage = () => {
 	const scrollTo = (id) => {
@@ -24,7 +25,7 @@ const LandingPage = () => {
 			<div className="hero" id="home">
 				<Photo
 					file="hero-bridesmaids.jpg"
-					sizes="100vw"
+					sizes="(orientation: portrait) 66vh, 100vw"
 					className="hero-bg"
 					fetchpriority="high"
 				/>
@@ -63,6 +64,8 @@ const LandingPage = () => {
 			</div>
 
 			<Process />
+
+			<CtaBand onContact={toContact} />
 
 			<div id="contact">
 				<Contact />

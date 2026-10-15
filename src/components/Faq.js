@@ -7,12 +7,10 @@ function Faq() {
 	const toggle = (i) => setOpenIndex(openIndex === i ? null : i);
 
 	return (
-		<div className="faq-container">
-			<div className="faq-header reveal">
-				<span className="section-eyebrow">Got Questions?</span>
-				<h2 className="section-heading">
-					Frequently Asked <em>Questions</em>
-				</h2>
+		<section className="lx-section lx-faq">
+			<div className="lx-head reveal">
+				<span className="section-eyebrow">Good to Know</span>
+				<h2 className="section-heading">Questions</h2>
 			</div>
 			<div className="faq-list">
 				{faqs.map((f, i) => {
@@ -26,7 +24,8 @@ function Faq() {
 								aria-controls={`faq-answer-${i}`}
 								onClick={() => toggle(i)}
 							>
-								{f.q}
+								<span className="lx-faq-num" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+								<span className="lx-faq-q">{f.q}</span>
 							</button>
 							{/* Animates open/closed by growing the grid row from 0fr to 1fr. */}
 							<div className="faq-answer-wrapper" id={`faq-answer-${i}`} aria-hidden={!open}>
@@ -38,7 +37,7 @@ function Faq() {
 					);
 				})}
 			</div>
-		</div>
+		</section>
 	);
 }
 
