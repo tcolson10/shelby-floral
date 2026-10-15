@@ -2,6 +2,13 @@ import { useState } from "react";
 
 const FORM_ENDPOINT = "https://formspree.io/f/mwkgrzrd";
 
+// "2027-06-12" -> "June 12, 2027". Built from the parts so the time zone can't shift the day.
+const formatDate = (value) => {
+	const [y, m, d] = value.split("-").map(Number);
+	if (!y || !m || !d) return value;
+	return new Date(y, m - 1, d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+};
+
 function Contact() {
 	// "idle" | "sending" | "sent" | "error"
 	const [status, setStatus] = useState("idle");
@@ -9,10 +16,16 @@ function Contact() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setStatus("sending");
+		const data = new FormData(e.target);
+		// Formspree uses _subject as the email's subject line, so Shelby's inbox reads
+		// "New Inquiry: Sarah & James, June 12, 2027".
+		const names = data.get("fullName").trim();
+		const date = formatDate(data.get("date"));
+		data.append("_subject", `New Inquiry: ${names}, ${date}`);
 		try {
 			const res = await fetch(FORM_ENDPOINT, {
 				method: "POST",
-				body: new FormData(e.target),
+				body: data,
 				headers: { Accept: "application/json" },
 			});
 			if (!res.ok) throw new Error(`Formspree responded ${res.status}`);
