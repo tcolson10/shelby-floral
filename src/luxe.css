@@ -585,6 +585,31 @@ body {
 	resize: vertical;
 }
 
+/* Every field the same height. On iPhone an empty date field otherwise
+   collapses shorter and jumps once a date is picked. */
+.lx-contact .contact-form input {
+	min-height: 46px;
+}
+
+.lx-contact .contact-form input[type="date"] {
+	display: block;
+	width: 100%;
+	text-align: left;
+}
+
+/* iPhone centers the picked date; keep it left like the other answers. */
+.lx-contact .contact-form input[type="date"]::-webkit-date-and-time-value {
+	margin: 0;
+	text-align: left;
+}
+
+/* When the phone scrolls to a field (tapping Next, or a missed required
+   field), keep it clear of the fixed header. */
+.lx-contact .contact-form input,
+.lx-contact .contact-form textarea {
+	scroll-margin-top: calc(var(--header-height) + 40px);
+}
+
 .lx-contact .contact-form input:hover,
 .lx-contact .contact-form textarea:hover {
 	border-color: var(--stone);

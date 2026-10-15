@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const FORM_ENDPOINT = "https://formspree.io/f/mwkgrzrd";
 
@@ -9,9 +9,46 @@ const formatDate = (value) => {
 	return new Date(y, m - 1, d).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
 };
 
+// Today as "2027-06-12" in the visitor's time zone, so the date picker starts at today.
+const today = () => {
+	const d = new Date();
+	return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+};
+
 function Contact() {
 	// "idle" | "sending" | "sent" | "error"
 	const [status, setStatus] = useState("idle");
+	const [budget, setBudget] = useState("");
+	const thanksRef = useRef(null);
+
+	// The thank-you message is much shorter than the form, so bring it into view.
+	// Otherwise phones are left looking at the FAQ below it.
+	useEffect(() => {
+		if (status !== "sent" || !thanksRef.current) return;
+		const header = document.querySelector("header")?.offsetHeight ?? 60;
+		window.scrollTo({
+			top: thanksRef.current.getBoundingClientRect().top + window.pageYOffset - header,
+			behavior: "smooth",
+		});
+	}, [status]);
+
+	// On a phone keyboard, Return moves to the next field instead of sending a
+	// half-finished inquiry. The last field's Return still sends.
+	const handleKeyDown = (e) => {
+		if (e.key !== "Enter" || e.target.tagName !== "INPUT") return;
+		const fields = [...e.currentTarget.querySelectorAll("input:not([tabindex='-1']), textarea")];
+		const next = fields[fields.indexOf(e.target) + 1];
+		if (!next) return;
+		e.preventDefault();
+		next.focus();
+	};
+
+	// Puts a dollar sign in front when the budget starts with a number: "5000" -> "$5000".
+	// Words like "Not sure yet" are left as typed.
+	const handleBudget = (e) => {
+		const rest = e.target.value.replace(/^[\s$]+/, "");
+		setBudget(/^\d/.test(rest) ? `$${rest}` : rest);
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -37,7 +74,7 @@ function Contact() {
 
 	if (status === "sent") {
 		return (
-			<section className="lx-section lx-contact lx-contact--thanks">
+			<section className="lx-section lx-contact lx-contact--thanks" ref={thanksRef}>
 				<div className="lx-contact-thanks" role="status">
 					<span className="section-eyebrow">Inquiry Received</span>
 					<h2 className="section-heading">Thank You</h2>
@@ -61,7 +98,7 @@ function Contact() {
 					shelby@shelbyfloral.com
 				</a>
 			</div>
-			<form className="contact-form" onSubmit={handleSubmit}>
+			<form className="contact-form" onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
 				<p className="form-note">
 					Fields marked <span aria-hidden="true">*</span> are required
 				</p>
@@ -72,55 +109,55 @@ function Contact() {
 				<div className="form-row">
 					<div className="form-group">
 						<label className="form-label" htmlFor="fullName">Names *</label>
-						<input type="text" id="fullName" name="fullName" placeholder="Your name & partner's name" autoComplete="name" required />
+						<input type="text" id="fullName" name="fullName" placeholder="Your name & partner's name" autoComplete="name" autoCapitalize="words" enterKeyHint="next" required />
 					</div>
 					<div className="form-group">
 						<label className="form-label" htmlFor="email">Email *</label>
-						<input type="email" id="email" name="email" placeholder="Your email address" autoComplete="email" required />
+						<input type="email" id="email" name="email" placeholder="Your email address" autoComplete="email" autoCapitalize="none" autoCorrect="off" spellCheck="false" enterKeyHint="next" required />
 					</div>
 				</div>
 
 				<div className="form-row">
 					<div className="form-group">
 						<label className="form-label" htmlFor="date">Event Date *</label>
-						<input type="date" id="date" name="date" required />
+						<input type="date" id="date" name="date" min={today()} required />
 					</div>
 					<div className="form-group">
 						<label className="form-label" htmlFor="phone">Phone</label>
-						<input type="tel" id="phone" name="phone" placeholder="Your phone number" autoComplete="tel" />
+						<input type="tel" id="phone" name="phone" placeholder="Your phone number" autoComplete="tel" enterKeyHint="next" />
 					</div>
 				</div>
 
 				<div className="form-row">
 					<div className="form-group">
 						<label className="form-label" htmlFor="location">Event Location</label>
-						<input type="text" id="location" name="location" placeholder="City, venue" />
+						<input type="text" id="location" name="location" placeholder="City, venue" autoCapitalize="words" enterKeyHint="next" />
 					</div>
 					<div className="form-group">
 						<label className="form-label" htmlFor="eventType">Event Type</label>
-						<input type="text" id="eventType" name="eventType" placeholder="Wedding, shower, etc." />
+						<input type="text" id="eventType" name="eventType" placeholder="Wedding, shower, etc." autoCapitalize="sentences" enterKeyHint="next" />
 					</div>
 				</div>
 
 				<div className="form-row">
 					<div className="form-group">
 						<label className="form-label" htmlFor="guestCount">Guest Count</label>
-						<input type="text" id="guestCount" name="guestCount" inputMode="numeric" placeholder="Approximate number" />
+						<input type="text" id="guestCount" name="guestCount" inputMode="numeric" placeholder="Approximate number" enterKeyHint="next" />
 					</div>
 					<div className="form-group">
 						<label className="form-label" htmlFor="budget">Floral Budget</label>
-						<input type="text" id="budget" name="budget" placeholder="Approximate budget" />
+						<input type="text" id="budget" name="budget" placeholder="Approximate budget" value={budget} onChange={handleBudget} enterKeyHint="next" />
 					</div>
 				</div>
 
 				<div className="form-row">
 					<div className="form-group">
 						<label className="form-label" htmlFor="colors">Color Palette</label>
-						<input type="text" id="colors" name="colors" placeholder="Your colors" />
+						<input type="text" id="colors" name="colors" placeholder="Your colors" autoCapitalize="sentences" enterKeyHint="next" />
 					</div>
 					<div className="form-group">
 						<label className="form-label" htmlFor="flowers">Specific Flowers</label>
-						<input type="text" id="flowers" name="flowers" placeholder="Any must-have blooms" />
+						<input type="text" id="flowers" name="flowers" placeholder="Any must-have blooms" autoCapitalize="sentences" enterKeyHint="next" />
 					</div>
 				</div>
 
@@ -137,11 +174,11 @@ function Contact() {
 				<div className="form-row">
 					<div className="form-group">
 						<label className="form-label" htmlFor="instagramHandle">Instagram Handle</label>
-						<input type="text" id="instagramHandle" name="instagramHandle" placeholder="@handle" />
+						<input type="text" id="instagramHandle" name="instagramHandle" placeholder="@handle" autoCapitalize="none" autoCorrect="off" spellCheck="false" enterKeyHint="next" />
 					</div>
 					<div className="form-group">
 						<label className="form-label" htmlFor="pinterestLink">Pinterest Board</label>
-						<input type="url" id="pinterestLink" name="pinterestLink" placeholder="Link to your inspo board" />
+						<input type="text" id="pinterestLink" name="pinterestLink" inputMode="url" placeholder="Link to your inspo board" autoCapitalize="none" autoCorrect="off" spellCheck="false" enterKeyHint="send" />
 					</div>
 				</div>
 
