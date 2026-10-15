@@ -363,12 +363,14 @@ body {
 	grid-area: 1 / 1;
 	margin: 0;
 	opacity: 0;
-	transition: opacity 0.9s var(--ease);
+	/* The old quote clears out fast, then the new one fades in, so the two never overlap. */
+	transition: opacity 0.2s ease-out;
 	pointer-events: none;
 }
 
 .lx-quote.is-active {
 	opacity: 1;
+	transition: opacity 0.45s var(--ease) 0.2s;
 	pointer-events: auto;
 }
 
@@ -1151,6 +1153,7 @@ nav li a:focus {
 @media (prefers-reduced-motion: reduce) {
 	.reveal,
 	.lx-quote,
+	.lx-quote.is-active,
 	.lx-link::after,
 	.masonry-item img {
 		transition: none;
