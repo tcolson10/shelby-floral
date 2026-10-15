@@ -23,7 +23,7 @@ const LandingPage = () => {
 			{/* Hero */}
 			<div className="hero" id="home">
 				<Photo
-					file="hero-hydrangeas.jpg"
+					file="hero-bridesmaids.jpg"
 					sizes="100vw"
 					className="hero-bg"
 					fetchpriority="high"

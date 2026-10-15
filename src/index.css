@@ -1,22 +1,24 @@
 /* ======== CSS VARIABLES ======== */
 :root {
-	/* Palette taken from the hydrangeas in the hero photo; whites and creams kept. */
+	/* Blush palette: soft pink-champagne bands, near-black ink, dusty rose
+	   accents; whites and creams kept. (Variable names are from the earlier
+	   blue palette.) */
 	--cream: #faf8f5;
 	--ivory: #f0ebe0;
-	--blue: #41658f;
-	--blue-dark: #2f4f78;
-	--blue-light: #a9c1dc;
-	--navy: #233a55; /* deep blue for text and solid buttons */
-	--french: #46658a; /* dusty French blue for the dark sections */
-	--slate: #56677c;
-	--muted: #8b98a8;
-	--border: #d9e2ec;
+	--blue: #8a4a52; /* dusty rose accent */
+	--blue-dark: #8a4a52; /* hover fill */
+	--blue-light: #e6c4c0; /* light rose: soft borders and dots */
+	--navy: #222222; /* near-black ink for headings and text */
+	--french: #f2ddd6; /* blush for the testimonials, footer and stats bands */
+	--slate: #555555;
+	--muted: #a39e9b;
+	--border: #ebe5e2;
 	--white: #ffffff;
 
 	/* Legacy aliases so nothing breaks */
 	--primary-color: var(--blue);
 	--primary-dark: var(--blue-dark);
-	--primary-color-alpha: rgba(65, 101, 143, 0.25);
+	--primary-color-alpha: rgba(138, 74, 82, 0.2);
 	--text-color: var(--navy);
 	--light-gray: var(--cream);
 	--portfolio-bg: var(--ivory);
@@ -475,7 +477,7 @@ nav li a:focus {
 	height: 100vh;
 	height: 100lvh;
 	object-fit: cover;
-	object-position: center 44%;
+	object-position: center 38%;
 	z-index: 0;
 }
 
@@ -561,19 +563,13 @@ nav li a:focus {
 	border: 1px solid rgba(255, 255, 255, 0.6);
 	font-family: var(--font-body);
 	font-size: 0.68rem;
-	font-weight: 400;
+	font-weight: 600;
 	letter-spacing: 0.3em;
 	text-transform: uppercase;
 	white-space: nowrap;
 	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
 	transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-}
-
-.hero-btn:hover,
-.hero-btn:active {
-	background: var(--blue-dark);
-	border-color: var(--blue-dark);
 }
 
 .hero-btn:active {
@@ -594,13 +590,13 @@ nav li a:focus {
 		min-height: 100svh;
 	}
 
-	/* Trim the top of the photo on phones: make it 18% taller than the
-	   screen and shift it up so the extra is cut off above. */
+	/* Trim the top of the photo on phones: make it 32% taller than the
+	   screen and shift it up so the extra sky is cut off above. */
 	.hero-bg {
-		top: -18vh;
-		top: -18lvh;
-		height: 118vh;
-		height: 118lvh;
+		top: -32vh;
+		top: -32lvh;
+		height: 132vh;
+		height: 132lvh;
 	}
 }
 
@@ -1173,9 +1169,9 @@ nav li a:focus {
 
 .carousel-btn:hover,
 .carousel-btn:active {
-	background: var(--blue-dark);
-	border-color: var(--blue-dark);
-	color: var(--white);
+	background: var(--blue);
+	border-color: var(--blue);
+	color: var(--ivory);
 }
 
 .carousel-btn:focus-visible {
@@ -1229,8 +1225,8 @@ nav li a:focus {
    it's outlined, since a navy button would vanish on this navy section.) */
 .testimonials-button:hover,
 .testimonials-button:active {
-	background: var(--blue-dark);
-	border-color: var(--blue-dark);
+	background: var(--blue);
+	border-color: var(--blue);
 	color: var(--ivory);
 }
 
@@ -1561,8 +1557,8 @@ nav li a:focus {
 .submit-button {
 	display: inline-block;
 	padding: 17px 60px;
-	background: var(--navy);
-	color: var(--ivory);
+	background: transparent;
+	color: var(--navy);
 	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
@@ -1575,10 +1571,12 @@ nav li a:focus {
 		border-color var(--transition-speed) ease;
 }
 
+/* Matches the site's other buttons: black outline, fills dusty rose on hover. */
 .submit-button:hover,
 .submit-button:active {
 	background: var(--blue-dark);
 	border-color: var(--blue-dark);
+	color: var(--ivory);
 }
 
 .submit-button:disabled {
@@ -1781,8 +1779,8 @@ nav li a:focus {
 	display: inline-block;
 	padding: 14px 36px;
 	margin-top: 8px;
-	background: var(--navy);
-	color: var(--ivory);
+	background: transparent;
+	color: var(--navy);
 	border: 1px solid var(--navy);
 	font-family: var(--font-body);
 	font-size: 0.72rem;
@@ -2047,6 +2045,128 @@ nav li a:focus {
 .submit-button,
 .partnerships-btn {
 	-webkit-tap-highlight-color: transparent;
+}
+
+/* ======== BLUSH BANDS: testimonials, footer, stats ======== */
+/* These used light text on the old dark bands; on blush they use ink and rose. */
+.testimonials-container,
+.site-footer,
+.stats-bar {
+	color: var(--navy);
+}
+
+.testimonials-heading,
+.carousel-slide blockquote,
+.testimonial-item blockquote,
+.page-title,
+.testimonials-header p,
+.footer-name,
+.stat-number {
+	color: var(--navy);
+}
+
+.testimonials-eyebrow,
+.client-name,
+.footer-meta,
+.footer-copied,
+.stat-label,
+.testimonials-container .back-link {
+	color: var(--blue);
+}
+
+.testimonials-container .back-link:hover {
+	color: var(--navy);
+}
+
+.stat-item + .stat-item::before {
+	background: var(--blue-light);
+}
+
+.carousel-btn {
+	color: var(--navy);
+	border-color: rgba(34, 34, 34, 0.3);
+}
+
+.carousel-dot {
+	background: rgba(34, 34, 34, 0.18);
+}
+
+.carousel-dot--active {
+	background: var(--blue);
+}
+
+.testimonials-button {
+	color: var(--navy);
+	border-color: var(--navy);
+}
+
+.testimonial-item {
+	background: rgba(255, 255, 255, 0.55);
+	border-color: var(--blue-light);
+}
+
+.testimonial-item:hover {
+	background: rgba(255, 255, 255, 0.8);
+}
+
+.footer-icons a {
+	color: var(--blue);
+}
+
+.footer-icons a:hover,
+.footer-icons a:focus-visible {
+	color: var(--navy);
+}
+
+/* Every section: big heading in dusty rose, small label above it in black. */
+.section-heading,
+.testimonials-heading,
+.page-title {
+	color: var(--blue);
+}
+
+.section-eyebrow,
+.testimonials-eyebrow {
+	color: var(--navy);
+}
+
+/* ======== BUTTONS: filled dusty rose, deeper rose on hover ======== */
+/* Every button outside the hero rests filled with the rose and cream text. */
+.about-cta,
+.portfolio-button,
+.testimonials-button,
+.carousel-btn,
+.submit-button,
+.partnerships-btn {
+	background: var(--blue);
+	border-color: var(--blue);
+	color: var(--ivory);
+}
+
+.about-cta:hover,
+.about-cta:active,
+.portfolio-button:hover,
+.portfolio-button:active,
+.testimonials-button:hover,
+.testimonials-button:active,
+.carousel-btn:hover,
+.carousel-btn:active,
+.submit-button:hover,
+.submit-button:active,
+.partnerships-btn:hover,
+.partnerships-btn:active {
+	background: #6f3a42;
+	border-color: #6f3a42;
+	color: var(--ivory);
+}
+
+/* Hero buttons stay see-through; on hover/tap they become the filled rose
+   button used everywhere else. */
+.hero-btn:hover,
+.hero-btn:active {
+	background: var(--blue);
+	border-color: var(--blue);
+	color: var(--ivory);
 }
 
 /* ======== PRINT ======== */

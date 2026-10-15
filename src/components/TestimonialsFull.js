@@ -10,7 +10,7 @@ function TestimonialsFull() {
     return (
         <div className="testimonials-container full-page">
             <div className="page-nav">
-                <Link to="/testimonials" className="back-link" style={{ color: 'rgba(255,255,255,0.85)' }}>← Back to Testimonials</Link>
+                <Link to="/testimonials" className="back-link">← Back to Testimonials</Link>
             </div>
             <div className="testimonials-header">
                 <h1 className='page-title'>Testimonials</h1>
