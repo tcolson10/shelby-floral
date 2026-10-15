@@ -73,9 +73,9 @@ const homeGallery = [
 	"IMG_8790.jpg",
 	"IMG_7633.jpg",
 	"IMG_4486.jpg",
-	"IMG_7623.jpg",
+	"IMG_5167.jpg",
 	"9F174CF3-66EE-4E7F-A50D-5F61FF8BD789.jpeg",
-	"IMG_7683.jpg",
+	"IMG_7623.jpg",
 	"IMG_7686.jpg",
 	"69E94533-5E79-4BEE-8264-76315704CB4E.jpeg",
 	"IMG_6983.jpg",
@@ -83,6 +83,7 @@ const homeGallery = [
 	"IMG_0597.jpeg",
 	"IMG_7678.jpg",
 	"IMG_1708.jpg",
+	"IMG_7683.jpg",
 ];
 
 // /full-portfolio page, in display order.
@@ -102,7 +103,6 @@ const fullGallery = [
 	"IMG_7624.jpg",
 	"013355F8-6967-4C7B-AF4E-5F760C595FA5.jpeg",
 	"IMG_7629.jpg",
-	"IMG_5167.jpg",
 	"IMG_0413.jpeg",
 	"IMG_7626.jpg",
 	"IMG_6141.jpg",

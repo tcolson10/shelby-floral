@@ -1,15 +1,15 @@
 /* ======== CSS VARIABLES ======== */
 :root {
-	/* Blush palette: soft pink-champagne bands, near-black ink, dusty rose
-	   accents; whites and creams kept. (Variable names are from the earlier
+	/* Sage palette: pale sage bands, near-black ink, sage green accents;
+	   whites and creams kept. (Variable names are from the earlier
 	   blue palette.) */
 	--cream: #faf8f5;
 	--ivory: #f0ebe0;
-	--blue: #8a4a52; /* dusty rose accent */
-	--blue-dark: #8a4a52; /* hover fill */
-	--blue-light: #e6c4c0; /* light rose: soft borders and dots */
+	--blue: #4f6a55; /* sage green accent */
+	--blue-dark: #4f6a55; /* hover fill */
+	--blue-light: #c2cfbf; /* light sage: soft borders and dots */
 	--navy: #222222; /* near-black ink for headings and text */
-	--french: #f2ddd6; /* blush for the testimonials, footer and stats bands */
+	--french: #4f6a55; /* sage green for the testimonials, footer and stats bands */
 	--slate: #555555;
 	--muted: #a39e9b;
 	--border: #ebe5e2;
@@ -18,7 +18,7 @@
 	/* Legacy aliases so nothing breaks */
 	--primary-color: var(--blue);
 	--primary-dark: var(--blue-dark);
-	--primary-color-alpha: rgba(138, 74, 82, 0.2);
+	--primary-color-alpha: rgba(79, 106, 85, 0.2);
 	--text-color: var(--navy);
 	--light-gray: var(--cream);
 	--portfolio-bg: var(--ivory);
@@ -1571,7 +1571,7 @@ nav li a:focus {
 		border-color var(--transition-speed) ease;
 }
 
-/* Matches the site's other buttons: black outline, fills dusty rose on hover. */
+/* Matches the site's other buttons: black outline, fills sage on hover. */
 .submit-button:hover,
 .submit-button:active {
 	background: var(--blue-dark);
@@ -2047,78 +2047,7 @@ nav li a:focus {
 	-webkit-tap-highlight-color: transparent;
 }
 
-/* ======== BLUSH BANDS: testimonials, footer, stats ======== */
-/* These used light text on the old dark bands; on blush they use ink and rose. */
-.testimonials-container,
-.site-footer,
-.stats-bar {
-	color: var(--navy);
-}
-
-.testimonials-heading,
-.carousel-slide blockquote,
-.testimonial-item blockquote,
-.page-title,
-.testimonials-header p,
-.footer-name,
-.stat-number {
-	color: var(--navy);
-}
-
-.testimonials-eyebrow,
-.client-name,
-.footer-meta,
-.footer-copied,
-.stat-label,
-.testimonials-container .back-link {
-	color: var(--blue);
-}
-
-.testimonials-container .back-link:hover {
-	color: var(--navy);
-}
-
-.stat-item + .stat-item::before {
-	background: var(--blue-light);
-}
-
-.carousel-btn {
-	color: var(--navy);
-	border-color: rgba(34, 34, 34, 0.3);
-}
-
-.carousel-dot {
-	background: rgba(34, 34, 34, 0.18);
-}
-
-.carousel-dot--active {
-	background: var(--blue);
-}
-
-.testimonials-button {
-	color: var(--navy);
-	border-color: var(--navy);
-}
-
-.testimonial-item {
-	background: rgba(255, 255, 255, 0.55);
-	border-color: var(--blue-light);
-}
-
-.testimonial-item:hover {
-	background: rgba(255, 255, 255, 0.8);
-}
-
-.footer-icons a {
-	color: var(--blue);
-}
-
-.footer-icons a:hover,
-.footer-icons a:focus-visible {
-	color: var(--navy);
-}
-
-/* Every section: big heading in dusty rose, small label above it in black. */
+/* Every section: big heading in sage green, small label above it in black. */
 .section-heading,
 .testimonials-heading,
 .page-title {
@@ -2130,8 +2059,8 @@ nav li a:focus {
 	color: var(--navy);
 }
 
-/* ======== BUTTONS: filled dusty rose, deeper rose on hover ======== */
-/* Every button outside the hero rests filled with the rose and cream text. */
+/* ======== BUTTONS: filled sage green, deeper sage on hover ======== */
+/* Every button outside the hero rests filled with the sage and cream text. */
 .about-cta,
 .portfolio-button,
 .testimonials-button,
@@ -2155,18 +2084,100 @@ nav li a:focus {
 .submit-button:active,
 .partnerships-btn:hover,
 .partnerships-btn:active {
-	background: #6f3a42;
-	border-color: #6f3a42;
+	background: #3c5242;
+	border-color: #3c5242;
 	color: var(--ivory);
 }
 
-/* Hero buttons stay see-through; on hover/tap they become the filled rose
+/* Hero buttons stay see-through; on hover/tap they become the filled sage
    button used everywhere else. */
 .hero-btn:hover,
 .hero-btn:active {
 	background: var(--blue);
 	border-color: var(--blue);
 	color: var(--ivory);
+}
+
+/* Computers only: lift the hero text into the sky so it clears the faces. */
+@media (min-width: 769px) {
+	.hero {
+		align-items: flex-start;
+		/* Tracks where the faces land in the cover-scaled photo (object-position
+		   26%), so the buttons sit just above the heads at any screen size. */
+		padding-top: max(90px, calc(14.25vw + 26vh - 295px));
+		box-sizing: border-box;
+	}
+
+	.hero-bg {
+		object-position: center 26%;
+	}
+}
+
+/* ======== SAGE BANDS: testimonials, footer, stats — green and white only ======== */
+.testimonials-container,
+.site-footer,
+.stats-bar,
+.testimonials-container .testimonials-heading,
+.testimonials-container .testimonials-eyebrow,
+.testimonials-container .page-title,
+.testimonials-container .testimonials-header p,
+.testimonials-container .back-link,
+.carousel-slide blockquote,
+.testimonial-item blockquote,
+.client-name,
+.footer-name,
+.footer-meta,
+.footer-copied,
+.stat-number,
+.stat-label {
+	color: var(--white);
+}
+
+.stat-item + .stat-item::before {
+	background: rgba(255, 255, 255, 0.35);
+}
+
+.carousel-dot {
+	background: rgba(255, 255, 255, 0.35);
+}
+
+.carousel-dot--active {
+	background: var(--white);
+}
+
+/* Buttons on the green: white outline, fill white with green text on hover. */
+.testimonials-container .testimonials-button,
+.testimonials-container .carousel-btn {
+	background: transparent;
+	border-color: var(--white);
+	color: var(--white);
+}
+
+.testimonials-container .testimonials-button:hover,
+.testimonials-container .testimonials-button:active,
+.testimonials-container .carousel-btn:hover,
+.testimonials-container .carousel-btn:active {
+	background: var(--white);
+	border-color: var(--white);
+	color: var(--french);
+}
+
+.testimonial-item {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+.testimonial-item:hover {
+	background: rgba(255, 255, 255, 0.14);
+}
+
+.footer-icons a {
+	color: var(--white);
+}
+
+.footer-icons a:hover,
+.footer-icons a:focus-visible {
+	color: rgba(255, 255, 255, 0.75);
 }
 
 /* ======== PRINT ======== */
