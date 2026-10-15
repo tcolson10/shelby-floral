@@ -45,7 +45,6 @@ const images = {
 	"IMG_7632.jpg": { w: 1067, h: 1600, alt: "Couple exchanging vows before a mountain backdrop, florals lining the aisle" },
 	"IMG_7633.jpg": { w: 1067, h: 1600, alt: "Couple facing each other at a mountaintop ceremony surrounded by guests and florals" },
 	"IMG_7635.jpg": { w: 1067, h: 1600, alt: "Blush centerpiece with tall candles on a reception table" },
-	"IMG_7637.jpg": { w: 1067, h: 1600, alt: "Pink and white centerpiece with taper candles at a candlelit reception" },
 	"IMG_7638.jpg": { w: 1067, h: 1600, alt: "Blush rose florals along a stone fireplace mantel and sweetheart table" },
 	"IMG_7670.jpg": { w: 1066, h: 1600, alt: "Barn reception hall with green hydrangea chandeliers above white-draped tables" },
 	"IMG_7666.jpg": { w: 1066, h: 1600, alt: "White orchid and green anthurium arrangement with trailing amaranthus beside a wedding menu" },
@@ -77,8 +76,8 @@ const homeGallery = [
 	"IMG_6983.jpg",
 	"IMG_7670.jpg",
 	"IMG_0597.jpeg",
-	"IMG_7678.jpg",
 	"IMG_1708.jpg",
+	"IMG_7678.jpg",
 	"IMG_7683.jpg",
 ];
 
@@ -119,7 +118,6 @@ const fullGallery = [
 	"sneak-1.jpeg",
 	"IMG_4006.JPG",
 	"IMG_4007.JPG",
-	"IMG_7637.jpg",
 	"IMG_7625.jpg",
 	"laceeWGroom.jpg",
 	"IMG_2952.JPG",
