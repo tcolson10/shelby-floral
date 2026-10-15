@@ -41,6 +41,9 @@ const PAGE_META = {
 	},
 };
 
+// The address the site is served from. shelbyfloral.com redirects here.
+const SITE_URL = "https://www.shelbyfloral.com";
+
 const CONTACT_EMAIL = "shelby@shelbyfloral.com";
 
 const SECTION_ROUTES = ["", "home", "portfolio", "about", "testimonials", "contact", "faq"];
@@ -81,8 +84,15 @@ function App() {
 		});
 	}, [location]);
 
-	// Per-page title and description
+	// Per-page title, description and canonical address
 	useEffect(() => {
+		// The section links (/about, /faq…) are the homepage scrolled down, so they
+		// point Google at the homepage. Separate pages point at themselves.
+		const section = SECTION_ROUTES.includes(location.pathname.replace(/^\/|\/$/g, ""));
+		const canonical = SITE_URL + (section ? "/" : location.pathname.replace(/\/$/, ""));
+		document.querySelector('link[rel="canonical"]')?.setAttribute("href", canonical);
+		document.querySelector('meta[property="og:url"]')?.setAttribute("content", canonical);
+
 		const meta = PAGE_META[location.pathname];
 		if (!meta) return;
 		document.title = meta.title;
