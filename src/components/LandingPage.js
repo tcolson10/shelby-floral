@@ -45,7 +45,7 @@ const LandingPage = () => {
 							View Our Work
 						</button>
 						<button type="button" className="hero-btn" onClick={toContact}>
-							Get In Touch
+							Inquire
 						</button>
 					</div>
 				</div>

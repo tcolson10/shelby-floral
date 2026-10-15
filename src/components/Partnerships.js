@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import BackLink from "./BackLink";
 import mediaKitData from "../data/mediaKitData";
 
 function Partnerships() {
 	useEffect(() => {
-		window.scrollTo(0, 0);
 		const prevTitle = document.title;
 		document.title = mediaKitData.meta.title;
 
@@ -23,9 +22,7 @@ function Partnerships() {
 	return (
 		<div className="partnerships-page full-page">
 			<div className="page-nav">
-				<Link to="/" className="back-link" style={{ color: "var(--blue)" }}>
-					← Back to Home
-				</Link>
+				<BackLink to="/">← Back to Home</BackLink>
 			</div>
 
 			<div className="partnerships-masthead">

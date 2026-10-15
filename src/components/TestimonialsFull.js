@@ -1,16 +1,11 @@
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import BackLink from './BackLink';
 import testimonialsData from '../data/testimonials';
 
 function TestimonialsFull() {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
-
     return (
         <div className="testimonials-container full-page">
             <div className="page-nav">
-                <Link to="/testimonials" className="back-link">← Back to Testimonials</Link>
+                <BackLink to="/testimonials">← Back to Home</BackLink>
             </div>
             <div className="testimonials-header">
                 <span className="section-eyebrow">Kind Words</span>

@@ -1,19 +1,12 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import BackLink from "./BackLink";
 import Gallery from "./Gallery";
 import { fullGallery, homeGallery } from "../data/images";
 
 function PortfolioFull() {
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
-
 	return (
 		<div className="portfolio-page-container full-page">
 			<div className="page-nav">
-				<Link to="/" className="back-link" style={{ color: "var(--blue)" }}>
-					← Back to Home
-				</Link>
+				<BackLink to="/">← Back to Home</BackLink>
 			</div>
 			<div className="portfolio-header reveal">
 				<span className="section-eyebrow">Our Work</span>

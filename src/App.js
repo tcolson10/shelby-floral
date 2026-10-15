@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import {
 	Routes,
 	Route,
 	Link,
 	useNavigate,
 	useLocation,
+	useNavigationType,
 	Navigate,
 } from "react-router-dom";
 import ReactGA4 from "react-ga4";
@@ -13,6 +14,10 @@ import LandingPage from "./components/LandingPage";
 import PortfolioFull from "./components/PortfolioFull";
 import TestimonialsFull from "./components/TestimonialsFull";
 import Partnerships from "./components/Partnerships";
+
+// Scroll position of every page visited in this session, keyed by history
+// entry, so Back returns visitors to exactly where they were.
+const savedScroll = new Map();
 
 const DEFAULT_DESCRIPTION =
 	"Shelby Floral is a Utah wedding florist creating custom bouquets, arches, ceremony installations and reception florals. Request a quote today.";
@@ -55,6 +60,7 @@ function App() {
 	const [emailCopied, setEmailCopied] = useState(false);
 	const navigate = useNavigate();
 	const location = useLocation();
+	const navigationType = useNavigationType();
 	const gaInitialized = useRef(false);
 
 	// Initialize GA4 once on mount
@@ -120,14 +126,51 @@ function App() {
 		window.scrollTo({ top, behavior: "smooth" });
 	};
 
-	// Scroll to section based on URL path when location changes
+	// The app manages scroll position itself (below), not the browser.
 	useEffect(() => {
+		if ("scrollRestoration" in window.history) {
+			window.history.scrollRestoration = "manual";
+		}
+	}, []);
+
+	// Keep a record of where the visitor is on the current page.
+	useEffect(() => {
+		const key = location.key;
+		let frame = null;
+		const save = () => {
+			frame = null;
+			savedScroll.set(key, window.scrollY);
+		};
+		const onScroll = () => {
+			if (frame === null) frame = requestAnimationFrame(save);
+		};
+		window.addEventListener("scroll", onScroll, { passive: true });
+		return () => {
+			window.removeEventListener("scroll", onScroll);
+			if (frame !== null) cancelAnimationFrame(frame);
+		};
+	}, [location.key]);
+
+	// Going Back (or Forward) returns to the saved spot; following a link to
+	// a section scrolls to that section.
+	useLayoutEffect(() => {
+		const saved = savedScroll.get(location.key);
+		if (navigationType === "POP" && saved !== undefined) {
+			window.scrollTo(0, saved);
+			// Once more after images and fonts settle, in case the page grew.
+			const t = setTimeout(() => window.scrollTo(0, saved), 120);
+			return () => clearTimeout(t);
+		}
 		const path = location.pathname.replace(/^\//, "");
 		if (SECTION_ROUTES.includes(path)) {
 			const sectionId = path === "" ? "home" : path;
-			setTimeout(() => scrollToSection(sectionId), 100);
+			const t = setTimeout(() => scrollToSection(sectionId), 100);
+			return () => clearTimeout(t);
 		}
-	}, [location.pathname]);
+		// Any other page (full portfolio, testimonials, partnerships) opens at the top.
+		window.scrollTo(0, 0);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [location.key]);
 
 	// mailto: only works when the device has a mail app set up, so also copy
 	// the address and say so, in case nothing opens.

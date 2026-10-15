@@ -187,11 +187,13 @@ body {
 }
 
 /* Portfolio */
-/* First section after the hero: a little less space above. */
+/* First section after the hero: a little less space above, and only a short
+   gap below the View Full Portfolio button. */
 .lx-portfolio {
 	max-width: 1360px;
 	margin: 0 auto;
 	padding-top: clamp(72px, 7.5vw, 116px);
+	padding-bottom: clamp(56px, 6vw, 88px);
 }
 
 .lx-portfolio .masonry-grid {
