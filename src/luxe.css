@@ -1068,6 +1068,89 @@ nav li a:focus {
 	}
 }
 
+/* ---------- Hero on computer screens: split, name left, photo right ----------
+   The photo is tall and narrow, so stretched across a wide screen only a band
+   of sky and faces fit. In the right-hand panel it shows the faces, bouquets
+   and dress at every screen size. Upright tablets and phones keep the
+   full-screen photo. */
+
+@media (min-width: 769px) and (orientation: landscape) {
+	.hero {
+		justify-content: flex-start;
+		align-items: center;
+		/* Center the name in the space below the header. */
+		padding-top: var(--header-height);
+		background: var(--linen);
+	}
+
+	/* Scrolls with the page here. Pinned, it would slide under the rising
+	   section below and leave only sky and heads showing. */
+	.hero-bg {
+		position: absolute;
+		height: 100%;
+		left: auto;
+		right: 0;
+		width: 56%;
+		object-position: center 55%;
+	}
+
+	.hero-overlay {
+		display: none;
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 1;
+		width: 44%;
+		padding: 0 clamp(24px, 4vw, 72px);
+		box-sizing: border-box;
+	}
+
+	.hero-eyebrow,
+	.hero-tagline {
+		color: var(--stone);
+	}
+
+	/* "Shelby" over "Floral" */
+	.hero-headline {
+		font-size: clamp(2.8rem, 5vw, 5.6rem);
+		line-height: 1.12;
+		color: var(--ink);
+	}
+
+	.hero-headline span {
+		display: block;
+	}
+
+	.hero-btn {
+		border-color: var(--ink);
+		color: var(--ink);
+	}
+
+	.hero-btn:hover,
+	.hero-btn:active {
+		background: var(--ink);
+		border-color: var(--ink);
+		color: var(--white);
+	}
+
+	.hero-btn:focus-visible {
+		outline-color: var(--ink);
+	}
+
+	/* The menu spans both halves, so it sits on a white bar from the start. */
+	header.nav-transparent {
+		background: rgba(255, 255, 255, 0.98);
+		box-shadow: 0 1px 0 var(--hairline);
+	}
+
+	header.nav-transparent nav li a,
+	header.nav-transparent nav li a:hover,
+	header.nav-transparent nav li a:focus {
+		color: var(--ink);
+	}
+}
+
 /* ---------- Scroll reveal: slower, softer ---------- */
 
 .reveal {

@@ -25,7 +25,7 @@ const LandingPage = () => {
 			<div className="hero" id="home">
 				<Photo
 					file="hero-bridesmaids.jpg"
-					sizes="(orientation: portrait) 66vh, 100vw"
+					sizes="(orientation: portrait) 66vh, (min-width: 769px) 56vw, 100vw"
 					className="hero-bg"
 					fetchpriority="high"
 				/>
